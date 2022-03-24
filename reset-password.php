@@ -70,7 +70,7 @@
                         } else {
 
                             $pass1 = md5($pass1);
-                            mysqli_query($con, "UPDATE `users` SET `password` = '" . $pass1 . "', `trn_date` = '" . $curDate . "' WHERE `email` = '" . $email . "'");
+                            mysqli_query($con, "UPDATE `users` SET `password` = '" . $pass1 . "' WHERE `email` = '" . $email . "'");
 
                             mysqli_query($con, "DELETE FROM `password_reset_temp` WHERE `email` = '$email'");
 
