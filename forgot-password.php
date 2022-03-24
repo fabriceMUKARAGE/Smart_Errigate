@@ -22,7 +22,7 @@ require('PHPMailer/PHPMailer.php');
                     <h2>Forgot Password</h2>   
 
                     <?php
-                    include('db.php');
+                    include('connection.php');
                     if (isset($_POST["email"]) && (!empty($_POST["email"]))) {
                         $email = $_POST["email"];
                         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
