@@ -51,12 +51,11 @@ require('PHPMailer/PHPMailer.php');
                             // Insert Temp Table
                             mysqli_query($con, "INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`) VALUES ('" . $email . "', '" . $key . "', '" . $expDate . "');");
 
-
                             $output.='<p>Please click on the following link to reset your password.</p>';
                             //replace the site url
                             $output.='<p><a href="http://localhost/reset-password/reset-password.php?key=' . $key . '&email=' . $email . '&action=reset" target="_blank">http://localhost/reset-password/reset-password.php?key=' . $key . '&email=' . $email . '&action=reset</a></p>';
                             $body = $output;
-                            $subject = "Password Recovery";
+                            $subject = "Password Recovery for E-rrigate";
 
                             $email_to = $email;
 
