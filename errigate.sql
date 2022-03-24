@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `beds`;
 CREATE TABLE IF NOT EXISTS `beds` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `farm_id` int(11) DEFAULT NULL,
   `humidity` varchar(100) DEFAULT NULL,
   `temperature` varchar(100) DEFAULT NULL,
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `beds` (
 
 DROP TABLE IF EXISTS `farm`;
 CREATE TABLE IF NOT EXISTS `farm` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
   `farm_name` varchar(100) DEFAULT NULL,
   `location` varchar(100) DEFAULT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `farm` (
 
 DROP TABLE IF EXISTS `farm_weather`;
 CREATE TABLE IF NOT EXISTS `farm_weather` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `farm_id` int(11) DEFAULT NULL,
   `temperature` varchar(100) DEFAULT NULL,
   `humidity` varchar(100) DEFAULT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `farm_weather` (
 
 DROP TABLE IF EXISTS `sensor`;
 CREATE TABLE IF NOT EXISTS `sensor` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `farm_id` int(11) DEFAULT NULL,
   `sensor_name` varchar(100) DEFAULT NULL,
   `location` varchar(100) DEFAULT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `sensor` (
 
 DROP TABLE IF EXISTS `tanks`;
 CREATE TABLE IF NOT EXISTS `tanks` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `farm_id` int(11) DEFAULT NULL,
   `level` varchar(100) DEFAULT NULL,
   `refill` varchar(100) DEFAULT NULL,
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS `tanks` (
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
@@ -137,3 +137,4 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ard
