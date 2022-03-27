@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+:root {
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    background:white; 
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+img{
+    position: absolute; top: 10px;left: 10px;
+}
+
+.text{
+    color:black;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    position:absolute; right:800px; top:200px; 
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+.Conditions{
+    color:black;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    position:absolute; left:15%; top: 650px;  
+}
+
+/* css code to create the loader*/
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid green;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Add animation to "page content" */
+  .animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+  }
+  
+  @-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+  }
+  
+  @keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+  }
+  
+  #myDiv {
+    display: none;
+    text-align: center;
+  }
+
+  /* end code for the loader*/
+
+/* container style*/
+.container{
+    background: #9DAF8BE0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    width: 42%;
+    padding: 120px 60px;
+    border-top-left-radius: 200px;  
+    border-bottom-left-radius: 200px; 
+    position:absolute; left:900px; top:0px;   
+}
+
+h2{
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+.form{
+    padding: 30px 40px;
+}
+
+.form-control{
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+    
+}
+
+.form-control label{
+    color: black;
+    display: block;
+    margin-bottom: 5px;
+    
+    
+}
+
+.form-control input{
+    border: 2px solid #f0f0f0;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.form-control input:focus{
+    outline: 0;
+    border-color: #777;
+}
+
+.form-control.success input{
+    border-color: var(--success-color);
+}
+
+.form-control.error input{
+    border-color: var(--error-color);
+}
+
+.form-control small{
+    color: var(--error-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    
+}
+
+.form-control.error small{
+    visibility: visible;
+}
+
+.form button {
+    cursor: pointer;
+    background-color: white;
+    border-radius: 8px;
+    color: #60615F;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#success {
+    color: var(--success-color);
+}
+
+.admin{
+    padding-left: 21.5% ;
+}
+
+.forgot{
+    padding-left: 20% ;
+}
