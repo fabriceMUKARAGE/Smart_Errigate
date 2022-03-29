@@ -29,14 +29,14 @@ else if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 else if ($_SERVER['REQUEST_METHOD'] == 'GET')
     logout($conn);
 
-// *****************Login function **********************
-function login($conn)
+// *****************Admin Login function **********************
+function adminLogin($conn)
 {
 
-    $username = $_POST['userName'];
-    $pwd = $_POST['pwd'];
+    $username = $_POST['username'];
+    $pwd = $_POST['password'];
 
-    $sql = "select pwd from users where user_name=?;";
+    $sql = "select password from admin where username=?;";
     $stmt = $conn->stmt_init();
     if (!$stmt->prepare($sql))
         httpReply(400, "Something went wrong");
@@ -45,7 +45,7 @@ function login($conn)
     if ($stmt->execute()) {
         $result = $stmt->get_result();
         $data = $result->fetch_assoc();
-        $isValid = password_verify($pwd, $data['pwd']);
+        $isValid = password_verify($pwd, $data['password']);
         if ($isValid) {
             $key = password_hash($username, PASSWORD_DEFAULT);
             $_SESSION[$key] = $username;
@@ -59,7 +59,39 @@ function login($conn)
     }
     exit();
 }
-// ************Delete User *****************
+
+
+// ***************** Customer Login function **********************
+function customerLogin($conn)
+{
+
+    $username = $_POST['username'];
+    $pwd = $_POST['password'];
+
+    $sql = "select password from customers where username=?;";
+    $stmt = $conn->stmt_init();
+    if (!$stmt->prepare($sql))
+        httpReply(400, "Something went wrong");
+
+    $stmt->bind_param('s', $username);
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        $data = $result->fetch_assoc();
+        $isValid = password_verify($pwd, $data['password']);
+        if ($isValid) {
+            $key = password_hash($username, PASSWORD_DEFAULT);
+            $_SESSION[$key] = $username;
+            setcookie('user', $key);
+            http_response_code(200);
+            echo 'welcome ' . $username;
+        } else {
+            http_response_code(401);
+            echo "Invalid User name or password";
+        }
+    }
+    exit();
+}
+// ************Delete Customer *****************
 function deleteUser($conn)
 {
 
@@ -70,7 +102,7 @@ function deleteUser($conn)
     }
     $user = $_SESSION[$_COOKIE['user']];
 
-    $sql = "DELETE FROM users where user_name=?;";
+    $sql = "DELETE FROM customers where username=?;";
     $stmt = $conn->stmt_init();
     if (!$stmt->prepare($sql)) {
         echo 'something went wrong';
