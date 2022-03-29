@@ -23,8 +23,16 @@
 
             <!--container of sign in as the user-->
             <div class="container">
-                <form id="form" class="form" method="POST" action="">
+                <form id="form" class="form" method="POST" action="adminLogin.php">
                     <h1>Sign In As Admin</h1>
+                    <?php if (isset($_GET['error'])) { ?>
+
+                    <p class="error">
+                        <?php echo $_GET['error']; ?>
+                    </p>
+
+                    <?php } ?>
+
                     <div class="form-control">
                         <input type="text" placeholder="Username" id="isername" required>
                         <small id='fullnameError'></small>
@@ -46,6 +54,7 @@
                     <div class="admin">
                         <label for="Admin">Sign in as an <a href="../user/loginUser.html"; style="color:#018749; font: 1em sans-serif; text-decoration: none;">User</a></label>
                     </div><br>
+
                     <div class="forgot">
                         <label for="Forgotpassword"><a href="forgotAdmin.html"; style="color:#018749; font: 1em sans-serif; text-decoration: none;" >forgotten password?</a></label>
                     </div>
