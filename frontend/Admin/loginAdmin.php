@@ -1,4 +1,76 @@
 <!--The first page for the web application-->
+
+<?php
+    //session_start();
+
+    // require __DIR__ ."../../../Errigate/db.php";
+    include '../../db.php';
+
+    $error = "";
+    if (isset($_POST['submit']))  {
+        $conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_NAME);
+
+
+        if($conn->connect_error){
+            die("Connection failed: ".$conn->connect_error);
+            echo "Connection failed";
+        }
+        else {
+
+            //this will have to change coz I'm not using sign up
+            $Email = $_POST["email"];
+            $Password=$_POST["password"];
+            // need a table for this in data base 
+            $stmt = $conn -> prepare("SELECT * FROM `admin` WHERE `email`=? AND `password`=?");
+            $stmt -> bind_param("ss",$Email,$Password);
+            $user = null;
+
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+
+            //there will be two options for this coz i have admiin and student interface
+            if($result -> fetch_assoc()) {
+                header( 'Location: ../../index.php');
+
+            }
+            else {
+                $error = " Wrong credentials: User does not exist. Try again";
+            }
+
+
+        }
+}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
