@@ -23,7 +23,7 @@
             $Email = $_POST["email"];
             $Password=$_POST["password"];
             // need a table for this in data base 
-            $stmt = $conn -> prepare("SELECT * FROM `admin` WHERE `email`=? AND `password`=?");
+            $stmt = $conn -> prepare("SELECT * FROM `customers` WHERE `email`=? AND `password`=?");
             $stmt -> bind_param("ss",$Email,$Password);
             $user = null;
 
