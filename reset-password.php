@@ -70,14 +70,7 @@
                         } else {
 
                             $pass1 = md5($pass1);
-                            $sql = "UPDATE customers SET password='$pass1' WHERE email=" . $email . "";
-
-                            if ($con->query($sql) === TRUE) {
-                            echo "Record updated successfully";
-                            } else {
-                            echo "Error updating record: " . $conn->error;
-                            }
-                            // mysqli_query($con, "UPDATE `customers` SET `password` = '" . $pass1 . "' WHERE `email` = '" . $email . "'");
+                            mysqli_query($con, "UPDATE `customers` SET `password` = '" . $pass1 . "' WHERE `email` = '" . $email . "'");
 
                             mysqli_query($con, "DELETE FROM `password_reset_temp` WHERE `email` = '$email'");
 
