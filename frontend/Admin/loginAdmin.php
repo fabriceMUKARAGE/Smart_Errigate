@@ -31,7 +31,8 @@
 
             //there will be two options for this coz i have admiin and student interface
             if($result -> fetch_assoc()) {
-                header( 'Location: ../../index.php');
+
+                header( 'Location: adminHome.php');
 
             }
             else {
@@ -95,7 +96,7 @@
 
             <!--container of sign in as the user-->
             <div class="container">
-                <form id="form" class="form" method="POST" action="adminLogin.php">
+                <form id="form" class="form" method="POST" >
                     <h1>Sign In As Admin</h1>
                     <?php if (isset($_GET['error'])) { ?>
 
@@ -105,14 +106,14 @@
 
                     <?php } ?>
 
-                    <div class="form-control">
+                    <!-- <div class="form-control">
                         <input type="text" placeholder="Username" id="isername" required>
                         <small id='fullnameError'></small>
-                    </div>
-                    <div class="form-control">
+                    </div> -->
+                    <!-- <div class="form-control">
                         <input type="text" placeholder="Phone Number" id="phone" required>
                         <small id='phoneError'></small>
-                    </div>
+                    </div> -->
                     <div class="form-control">
                         <input type="text" placeholder="Email Address" id="email" required>
                         <small id='emailError'></small>
@@ -122,9 +123,9 @@
                         <small id='passwordError'></small>
                     </div>
                     <small id='success'></small>
-                    <button type="submit" id='submitBtn' href="#">Sign in</button><br>
+                    <button type="submit" id='submitBtn'>Sign in</button><br>
                     <div class="admin">
-                        <label for="Admin">Sign in as an <a href="../user/loginUser.html"; style="color:#018749; font: 1em sans-serif; text-decoration: none;">User</a></label>
+                        <label for="Admin">Sign in as an <a href="../user/loginUser.php"; style="color:#018749; font: 1em sans-serif; text-decoration: none;">User</a></label>
                     </div><br>
 
                     <div class="forgot">
