@@ -1,5 +1,32 @@
+<?php 
+        require '../../../../Errigate/connection.php';
+        $id=$_GET['updateid'];
+        $sql="Select * from `customers` where id=$id";
+        $result=mysqli_query($con,$sql);
+        $row=mysqli_fetch_assoc($result);
+        $email=$row['email'];
+        $password=$row['password'];
+        $phone_number=$row['phone_number'];
+       
+    
+        if(isset($_POST['submit'])){
+            $email=$_POST['email'];
+            $password=$_POST['password'];
+            $phone_number=$_POST['phone_number'];
+    
+            $sql="update `customers` set id=$id,email='$email',password='$password',phone_number='$phone_number' where id=$id";
+            echo "Updated successfully";
+            $result=mysqli_query($con,$sql);
+            if($result){
+                echo "<script>alert('Profile updated successfully');</script>";
+                header('location: ../../../customerIndex.php');
+            }
+            else{
+                die(mysqli_error($con));
+            }
+        }
+    ?>
 
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,7 +48,7 @@
               <span>Change Image</span>
             </label>
             <input id="file" type="file" onchange="loadFile(event)" />
-            <img src="profile.png" id="output" width="200" />
+            <img src="noprofil.jpg" id="output" width="200" />
           </div>
         <!--JavaScript for editing a picture -->
         <script>
@@ -29,34 +56,34 @@
             var image = document.getElementById("output");
             image.src = URL.createObjectURL(event.target.files[0]);
           };
-          </script>
+          </script>        
 
+        <!--Updating customer information -->
 
-        <!--Editing profile picture -->
         <div id="loader"></div>
             <div style="display:none;" id="myDiv" class="animate-bottom">         
                         <div class="container">
-                            <form id="form" class="form">
+                            <form id="form" class="form" method="post">
                                 <div class="form-control">
                                     <label for="username" style="color: #496130; font-size: 50px;"><br>Edit Profile</label>
                                 </div>
                                 <div class="form-control">
                                     <label for="email">Email address</label>
-                                    <input type="text" placeholder="John.Doe@hotmail.com" id="email" required>
+                                    <input type="text" name="email" value=<?php echo $email; ?> placeholder="John.Doe@hotmail.com" id="email" required>
                                     <small id='email'></small>
                                 </div>
                                 <div class="form-control">
                                     <label for="phone">Phone Number</label>
-                                    <input type="text" placeholder="+233 24 412 3456" id="phone" required>
+                                    <input type="text" name="phone_number" value=<?php echo $phone_number; ?> placeholder="+233 24 412 3456" id="phone" required>
                                     <small id='phoneError'></small>
                                 </div>
                                 <div class="form-control">
                                     <label for="password">Password</label>
-                                    <input type="password" placeholder="*******************" id="password" required>
+                                    <input type="password" name="password" value=<?php echo $password; ?> placeholder="*******************" id="password" required>
                                     <small id='passwordError'></small>
                                 </div>
                                 <small id='success'></small>
-                                <button type="submit" id='submitBtn'>Done</button>
+                                <button type="submit" name="submit" id='submitBtn'>Done</button>
                             </form>
                         </div>
 
