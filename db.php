@@ -1,34 +1,16 @@
-<!-- <?php
-// $server = "localhost:3306";
-// $user = "root";
-// $pwd = "";
-// $db = "errigate";
-
-// $conn = new mysqli($server, $user, $pwd, $db);
-
-//  header("Content-Type: text/html");
-// if($conn->connect_errno)
-// {http_response_code(400);
-//     echo  $conn->connect_error; exit();}
-
-?> -->
-
-
 <?php
-//Insert details of Database 
-$dbname = 'errigate';
-$dbuser = 'root';  
-$dbpass = ''; 
-$dbhost = 'localhost'; 
-
-// Establish a connection and ensure that it works 
-
-$connect = @mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
-if(!$connect){
-	echo "Error: " . mysqli_connect_error();
-	exit();
+/* Database credentials. Assuming you are running MySQL
+server with default setting (user 'root' with no password) */
+define('DB_SERVER', 'localhost');
+define('DB_USERNAME', 'root');
+define('DB_PASSWORD', '');
+define('DB_NAME', 'errigate');
+ 
+/* Attempt to connect to MySQL database */
+$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+ 
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
 }
-
-//echo "Connection Success!<br><br>";
-
 ?>

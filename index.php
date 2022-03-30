@@ -3,7 +3,6 @@
 
 
 
-
 <?php 
 
 session_start();
@@ -29,7 +28,7 @@ session_start();
   
 
      <a href="logout.php">Logout</a>
-     <a href="../frontend/Admin/loginAdmin.php">sign in as admin</a>
+     <a href="./frontend/Admin/login.php">sign in as admin</a>
      <a href="user/.php">sign in as user</a>
 
 </body>
