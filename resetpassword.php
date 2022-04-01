@@ -10,7 +10,7 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-4">
                     <?php
-                    include('connection.php');
+                    include('db.php');
                     if (isset($_GET["key"]) && isset($_GET["email"]) && isset($_GET["action"]) && ($_GET["action"] == "reset") && !isset($_POST["action"])) {
                         $key = $_GET["key"];
                         $email = $_GET["email"];
@@ -39,9 +39,7 @@
                                         <label><strong>Re-Enter New Password:</strong></label>
                                         <input type="password"  name="pass2" value="update" class="form-control"/>
                                     </div>
-
                                     <input type="hidden" name="email" value="<?php echo $email; ?>"/>
-                                    
                                     <div class="form-group">
                                         <input type="submit" id="reset" value="Reset Password"  class="btn btn-primary"/>
                                     </div>
@@ -72,7 +70,7 @@
                         } else {
 
                             $pass1 = md5($pass1);
-                            mysqli_query($con, "UPDATE `customers` SET `password` = '" . $pass1 . "' WHERE `email` = '" . $email . "'");
+                            mysqli_query($con, "UPDATE `users` SET `password` = '" . $pass1 . "', `trn_date` = '" . $curDate . "' WHERE `email` = '" . $email . "'");
 
                             mysqli_query($con, "DELETE FROM `password_reset_temp` WHERE `email` = '$email'");
 

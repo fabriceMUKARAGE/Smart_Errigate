@@ -39,7 +39,7 @@ require('../../PHPMailer/PHPMailer.php');
 
                             $output.='<p>Please click on the following link to reset your password.</p>';
                             //replace the site url
-                            $output.='<p><a href="http://localhost/reset-password/reset-password.php?key=' . $key . '&email=' . $email . '&action=reset" target="_blank">http://localhost/reset-password/reset-password.php?key=' . $key . '&email=' . $email . '&action=reset</a></p>';
+                            $output.='<p><a href="http://localhost/smartzoid/Errigate/frontend/user/newPasswordUser.php?key=' . $key . '&email=' . $email . '&action=reset" target="_blank">http://localhost/smartzoid/Errigate/frontend/user/newPasswordUser.php?key=' . $key . '&email=' . $email . '&action=reset</a></p>';
                             $body = $output;
                             $subject = "Password Recovery for E-rrigate";
 
