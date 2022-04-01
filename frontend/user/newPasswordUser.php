@@ -30,6 +30,41 @@
                 <p>Terms and conditions| FAQs | Contact us</p>
             </div>
 
+
+            <script>
+          
+                // Function to check Whether both passwords
+                // are the same or not.
+                function checkPassword(form) {
+                    password1 = form.password1.value;
+                    password2 = form.password2.value;
+      
+                    // If password not entered
+                    if (password1 == ''){
+                        alert ("Please enter Password");
+                        return false;
+                    }
+                          
+                    // If confirm password not entered
+                    else if (password2 == ''){
+                        alert ("Please enter confirm password");
+                        return false;
+                    }
+                        
+                    // If Not same return False.    
+                    else if (password1 != password2) {
+                        alert ("\nPassword did not match: Please try again...")
+                        return false;
+                    }
+      
+                    // If same return True.
+                    else{
+                        alert("Congratulations! you have changed your password")
+                        return true;
+                    }
+                }
+            </script>
+
                 <!--container of forgot password-->
                 <div class="container">
                 <?php
@@ -128,6 +163,7 @@
         }
         </script>
 
+       
         <!--codes that support the script and jquery library-->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="./script.js"></script>
