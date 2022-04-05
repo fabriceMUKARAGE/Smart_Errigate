@@ -6,6 +6,7 @@
 
     $error = "";
     if (isset($_POST['submit']))  {
+        session_start(); // Start the session
         $conn = new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_NAME);
 
 
@@ -18,6 +19,9 @@
             //this will have to change coz I'm not using sign up
             $Email = $_POST["email"];
             $Password=$_POST["password"];
+            $Password=md5($Password);
+            $_SESSION['email'] = $Email;
+            
             // need a table for this in data base 
             $stmt = $conn -> prepare("SELECT * FROM `admin` WHERE `email`=? AND `password`=?");
             $stmt -> bind_param("ss",$Email,$Password);
@@ -40,32 +44,6 @@
         }
 }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
