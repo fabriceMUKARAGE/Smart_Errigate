@@ -106,7 +106,7 @@
 
                         <div class="back">
                             <label style="color: white;" for="id">Remembered your password?</label>
-                            <label for="id"><a style="text-decoration: none; color: #60615F; font-size: 16px;" href="loginUser.html">Back to Login</a> </label>
+                            <label for="id"><a style="text-decoration: none; color: #60615F; font-size: 16px;" href="loginUser.php">Back to Login</a> </label>
                         </div>
                       
                     </form>

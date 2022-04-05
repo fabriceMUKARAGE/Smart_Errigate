@@ -126,7 +126,7 @@
                     </div><br>
 
                     <div class="forgot">
-                        <label for="Forgotpassword"><a href="forgotAdmin.html"; style="color:#018749; font: 1em sans-serif; text-decoration: none;" >forgotten password?</a></label>
+                        <label for="Forgotpassword"><a href="forgotAdmin.php"; style="color:#018749; font: 1em sans-serif; text-decoration: none;" >forgotten password?</a></label>
                     </div>
                 </form>
             </div>

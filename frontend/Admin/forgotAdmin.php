@@ -16,7 +16,7 @@ require('../../PHPMailer/PHPMailer.php');
                         if (!$email) {
                             $error .="Invalid email address";
                         } else {
-                            $sel_query = "SELECT * FROM `customers` WHERE email='" . $email . "'";
+                            $sel_query = "SELECT * FROM `admin` WHERE email='" . $email . "'";
                             $results = mysqli_query($con, $sel_query);
                             $row = mysqli_num_rows($results);
                             if ($row == "") {
@@ -39,7 +39,7 @@ require('../../PHPMailer/PHPMailer.php');
 
                             $output.='<p>Please click on the following link to reset your password.</p>';
                             //replace the site url
-                            $output.='<p><a href="http://localhost/smartzoid/Errigate/frontend/user/newPasswordUser.php?key=' . $key . '&email=' . $email . '&action=reset" target="_blank">http://localhost/smartzoid/Errigate/frontend/user/newPasswordUser.php?key=' . $key . '&email=' . $email . '&action=reset</a></p>';
+                            $output.='<p><a href="http://localhost/smartzoid/Errigate/frontend/Admin/newPasswordAdmin.php?key=' . $key . '&email=' . $email . '&action=reset" target="_blank">http://localhost/smartzoid/Errigate/frontend/Admin/newPasswordAdmin.php?key=' . $key . '&email=' . $email . '&action=reset</a></p>';
                             $body = $output;
                             $subject = "Password Recovery for E-rrigate";
 
@@ -70,7 +70,8 @@ require('../../PHPMailer/PHPMailer.php');
                             }
                         }
                     }
-                    ?>
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,7 +112,7 @@ require('../../PHPMailer/PHPMailer.php');
                         <h1 style="color: white;">Forgot <br>Password?</h1><br>
                         <h3 style="color: white;">Don't worry. We can help.</h3>
                         <div class="form-control">
-                            <input type="email" name="email" placeholder="Please type your email address" id="email">
+                            <input type="text" name="email" placeholder="Please type your email address" id="email" required>
                             <small id='emailError'></small>
                         </div>
 
@@ -123,7 +124,7 @@ require('../../PHPMailer/PHPMailer.php');
 
                         <div class="back">
                             <label style="color: white;" for="id">Remembered your password?</label><br><br>
-                            <label for="id"><a style="text-decoration: none; color: #60615F; font-size: 16px;" href="loginUser.php">Back to Login</a> </label>
+                            <label for="id"><a style="text-decoration: none; color: #60615F; font-size: 16px;" href="loginAdmin.php">Back to Login</a> </label>
                         </div>
                       
                     </form>

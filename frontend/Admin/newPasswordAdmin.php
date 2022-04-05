@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +31,6 @@
             </div>
 
 
-            
             <script>
           
                 // Function to check Whether both passwords
@@ -69,17 +67,37 @@
 
                 <!--container of forgot password-->
                 <div class="container">
-                    <form id="form" class="form" method="POST" action="" onSubmit = "return checkPassword(this)"> 
+                <?php
+                    include('../../connection.php');
+                    if (isset($_GET["key"]) && isset($_GET["email"]) && isset($_GET["action"]) && ($_GET["action"] == "reset") && !isset($_POST["action"])) {
+                        $key = $_GET["key"];
+                        $email = $_GET["email"];
+                        $curDate = date("Y-m-d H:i:s");
+                        $query = mysqli_query($con, "SELECT * FROM `password_reset_temp` WHERE `key`='" . $key . "' and `email`='" . $email . "';");
+                        $row = mysqli_num_rows($query);
+                        if ($row == "") {
+                            $error .= '<h2>Invalid Link</h2>';
+                        } else {
+                            $row = mysqli_fetch_assoc($query);
+                            $expDate = $row['expDate'];
+                            if ($expDate >= $curDate) {
+                                ?>
+                    <form id="form" class="form" method="POST" action="" name="update"> 
                         <h1 style="color: white;">Forgot <br>Password?</h1><br>
                         <h3 style="color: white;">Don't worry. We can help.</h3>
+                        <input type="hidden" name="action" value="update" class="form-control"/>
+
                         <div class="form-control">
-                            <input type="password" placeholder="Please enter your new password" id="password1"> 
-                            <small id='passwordError'></small>
+                            <input type="password" name="pass1"  value="update" placeholder="Please enter your new password" id="email" required>
+                            <small id='emailError'></small>
                         </div>
                         <div class="form-control">
-                            <input type="password" placeholder="Please re-enter your new password" id="password2"> 
-                            <small id='password2Error'></small>
+                            <input type="password" name="pass2" value="update" placeholder="Please re-enter your new password" id="ID" required>
+                            <small id='emailError'></small>
                         </div>
+
+                        <input type="hidden" name="email" value="<?php echo $email; ?>"/>
+
                         <div>
                             <label for="id">I can't remember my password</label><br>
                         </div>
@@ -88,10 +106,46 @@
 
                         <div class="back">
                             <label style="color: white;" for="id">Remembered your password?</label>
-                            <label for="id"><a style="text-decoration: none; color: #60615F; font-size: 16px;" href="loginUser.html">Back to Login</a> </label>
+                            <label for="id"><a style="text-decoration: none; color: #60615F; font-size: 16px;" href="loginAdmin.php">Back to Login</a> </label>
                         </div>
                       
                     </form>
+                    <?php
+                            } else {
+                                $error .= "<h2>Link Expired</h2>>";
+                            }
+                        }
+                        if ($error != "") {
+                            echo "<div class='error'>" . $error . "</div><br />";
+                        }
+                    }
+
+
+                    if (isset($_POST["email"]) && isset($_POST["action"]) && ($_POST["action"] == "update")) {
+                        $error = "";
+                        $pass1 = mysqli_real_escape_string($con, $_POST["pass1"]);
+                        $pass2 = mysqli_real_escape_string($con, $_POST["pass2"]);
+                        $email = $_POST["email"];
+                        $curDate = date("Y-m-d H:i:s");
+                        if ($pass1 != $pass2) {
+                            $error .= "<p>Password do not match, both password should be same.<br /><br /></p>";
+                        }
+                        if ($error != "") {
+                            echo $error;
+                        } else {
+
+                            $pass1 = md5($pass1);
+                            mysqli_query($con, "UPDATE `admin` SET `password` = '" . $pass1 . "' WHERE `email` = '" . $email . "'");
+
+                            mysqli_query($con, "DELETE FROM `password_reset_temp` WHERE `email` = '$email'");
+
+                            header("Location: loginAdmin.php");
+                            // exit();
+
+                            echo '<div class="error"><p>Congratulations! Your password has been updated successfully.</p>';
+                        }
+                    }
+                    ?>
                 </div>
         </div>
            
@@ -109,6 +163,7 @@
         }
         </script>
 
+       
         <!--codes that support the script and jquery library-->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="./script.js"></script>
