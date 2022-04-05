@@ -1,5 +1,3 @@
-<!--The first page for the web application-->
-
 <?php
     //session_start();
 
@@ -31,7 +29,6 @@
 
             //there will be two options for this coz i have admiin and student interface
             if($result -> fetch_assoc()) {
-
                 header( 'Location: adminHome.php');
 
             }
@@ -115,15 +112,15 @@
                         <small id='phoneError'></small>
                     </div> -->
                     <div class="form-control">
-                        <input type="text" placeholder="Email Address" id="email" required>
+                        <input type="text" name="email" placeholder="Email Address" id="email" autocomplete="off" required>
                         <small id='emailError'></small>
                     </div>
                     <div class="form-control">
-                        <input type="password" placeholder="Password" id="password" required>
+                        <input type="password" name="password" placeholder="Password" id="password" autocomplete="off" required>
                         <small id='passwordError'></small>
                     </div>
                     <small id='success'></small>
-                    <button type="submit" id='submitBtn'>Sign in</button><br>
+                    <button type="submit" name="submit" id='submitBtn'>Sign in</button><br>
                     <div class="admin">
                         <label for="Admin">Sign in as an <a href="../user/loginUser.php"; style="color:#018749; font: 1em sans-serif; text-decoration: none;">User</a></label>
                     </div><br>

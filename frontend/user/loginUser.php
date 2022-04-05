@@ -1,7 +1,3 @@
-<!--The first page for the web application-->
-
-<!--The first page for the web application-->
-
 <?php
     //session_start();
 
@@ -33,8 +29,7 @@
 
             //there will be two options for this coz i have admiin and student interface
             if($result -> fetch_assoc()) {
-
-                header( 'Location: adminHome.php');
+                header( 'Location: userHome.php');
 
             }
             else {
@@ -58,8 +53,25 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,68 +82,80 @@
 
 <body>
     <!--Looking the page-->
+
     <body onload="myFunction()" style="margin:0;">
-        
+
         <div id="loader"></div>
-            <div style="display:none;" id="myDiv" class="animate-bottom">
-            
+        <div style="display:none;" id="myDiv" class="animate-bottom">
+
             <!-- Image logo-->
             <img src="../assets/Elogo.png" alt="Logo image" width="150" height="150">
 
             <!--container of sign in as the user-->
             <div class="container">
-                <form id="form" class="form" method="POST" action=""> 
+                <form id="form" class="form" method="POST" >
                     <h1>Sign In As User</h1>
-                    <div class="form-control">
+                    <?php if (isset($_GET['error'])) { ?>
+
+                    <p class="error">
+                        <?php echo $_GET['error']; ?>
+                    </p>
+
+                    <?php } ?>
+
+                    <!-- <div class="form-control">
                         <input type="text" placeholder="Username" id="isername" required>
                         <small id='fullnameError'></small>
-                    </div>
-                    <div class="form-control">
+                    </div> -->
+                    <!-- <div class="form-control">
                         <input type="text" placeholder="Phone Number" id="phone" required>
                         <small id='phoneError'></small>
-                    </div>
+                    </div> -->
                     <div class="form-control">
-                        <input type="text" placeholder="Email Address" id="email" required>
+                        <input type="text" name="email" placeholder="Email Address" id="email" autocomplete="off" required>
                         <small id='emailError'></small>
                     </div>
                     <div class="form-control">
-                        <input type="password" placeholder="Password" id="password" required>
+                        <input type="password" name="password" placeholder="Password" id="password" autocomplete="off" required>
                         <small id='passwordError'></small>
                     </div>
                     <small id='success'></small>
-                    <button type="submit" id='submitBtn'>Sign in</button><br>
+                    <button type="submit" name="submit" id='submitBtn'>Sign in</button><br>
                     <div class="admin">
-                        <label for="Admin">Sign in as an <a href="../Admin/loginAdmin.php"; style="color:#018749; font: 1em sans-serif; text-decoration: none;">Admin</a></label>
+                        <label for="Admin">Sign in as an <a href="../admin/loginAdmin.php"; style="color:#018749; font: 1em sans-serif; text-decoration: none;">Admin</a></label>
                     </div><br>
+
                     <div class="forgot">
                         <label for="Forgotpassword"><a href="forgotUser.html"; style="color:#018749; font: 1em sans-serif; text-decoration: none;" >forgotten password?</a></label>
                     </div>
                 </form>
             </div>
-        
+
 
         </div>
-        
+
         <!--script that allow the page to take sometimes to load for the next page-->
         <script>
-        var myVar;
+            var myVar;
 
-        function myFunction() {
-        myVar = setTimeout(showPage, 500);
-        }
+            function myFunction() {
+                myVar = setTimeout(showPage, 500);
+            }
 
-        function showPage() {
-        document.getElementById("loader").style.display = "none";
-        document.getElementById("myDiv").style.display = "block";
-        }
+            function showPage() {
+                document.getElementById("loader").style.display = "none";
+                document.getElementById("myDiv").style.display = "block";
+            }
         </script>
 
         <!--displaying the sentences on the page-->
         <div class="sentence1">
-            <h>Worry less, your Crops can  rely entirely on E-rrigate<h/>
+            <h>Worry less, your Crops can rely entirely on E-rrigate
+                <h/>
         </div>
         <div class="sentence2">
-            <h>for deep moisturizing.<h/>
+            <h>for deep moisturizing.
+                <h/>
         </div>
 
         <!--codes that support the script and jquery library-->
@@ -140,4 +164,5 @@
 
     </body>
     <!--End of the body instrustructions-->
+
 </html>
