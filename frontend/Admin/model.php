@@ -60,13 +60,6 @@ class Database
         return true;
     }
 
-    // public function addFarm($user_id, $farm_name){
-    //     $sql = "INSERT INTO farm (user_id,farm_name) VALUES (:user_id,:farm_name)";
-    //     $stmt = $this->conn->prepare($sql);
-    //     $stmt->execute(['user_id' => $user_id, 'farm_name' => $farm_name]);
-    //     return true; 
-    // }
-
     public function addSensor($user_id, $sensor_name,$location,$type){
         $sql = "INSERT INTO sensor (user_id,sensor_name,location,type) VALUES (:user_id,:sensor_name,:location,:type)";
         $stmt = $this->conn->prepare($sql);
