@@ -13,7 +13,7 @@ class Database
     {
         try {
             $this->conn = new PDO($this->dsn, $this->username, $this->pass);
-            echo "Succesfully Conected!";
+            // echo "Succesfully Conected!";
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
