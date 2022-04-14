@@ -32,7 +32,7 @@ class Database
         $data = array();
         $sql = "SELECT beds.id, beds.user_id, customers.email, customers.farm, beds.bed_name FROM beds  INNER JOIN customers
         ON beds.user_id = customers.id ";
-        
+
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -45,7 +45,7 @@ class Database
 
     public function getUserBiId($id)
     { 
-        $sql = "SELECT beds.id, beds.user_id, customers.email, customers.farm, beds.bed_name, FROM beds INNER JOIN beds
+        $sql = "SELECT beds.id, beds.user_id, customers.email, customers.farm, beds.bed_name, FROM beds INNER JOIN customers
         ON customers.id = beds.user_id  WHERE id=:id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['id' => $id]);
@@ -84,8 +84,8 @@ class Database
 $ob = new Database();
 // print_r($ob->insert(6,"Bed1: tomato"));
 // print_r($ob->insert(6,"Bed2: strawberry"));
-print_r($ob->read());
-// print_r($ob->getUserBiId(6));
+// print_r($ob->read());
+print_r($ob->getUserBiId(6));
 // print_r($ob->update(5, "Dzifa","esthermensah@gmail.com","1234567890","0.00","dzi farms"));
 // print_r($ob->totalRowCount());
 // print_r($ob->addSensor(5,"temp1","Bed1","temperature"));
