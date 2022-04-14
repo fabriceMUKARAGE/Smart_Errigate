@@ -13,7 +13,7 @@ class Database
     {
         try {
             $this->conn = new PDO($this->dsn, $this->username, $this->pass);
-            // echo "Succesfully Conected!";
+            echo "Succesfully Conected!";
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -43,10 +43,9 @@ class Database
     }
 
 
-    public function getUserBiId($id)
+    public function getSensorBiId($id)
     { 
-        $sql = "SELECT beds.id, beds.user_id, customers.email, customers.farm, beds.bed_name, FROM beds INNER JOIN customers
-        ON customers.id = beds.user_id  WHERE id=:id";
+        $sql = "SELECT id, user_id, bed_name FROM beds WHERE id=:id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['id' => $id]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -85,8 +84,8 @@ $ob = new Database();
 // print_r($ob->insert(6,"Bed1: tomato"));
 // print_r($ob->insert(6,"Bed2: strawberry"));
 // print_r($ob->read());
-print_r($ob->getUserBiId(6));
-// print_r($ob->update(5, "Dzifa","esthermensah@gmail.com","1234567890","0.00","dzi farms"));
+// print_r($ob->getSensorBiId(2));
+// print_r($ob->update(2, "Dzifa","esth"));
 // print_r($ob->totalRowCount());
 // print_r($ob->addSensor(5,"temp1","Bed1","temperature"));
 // print_r($ob->addBed(5,"Bed1"));
