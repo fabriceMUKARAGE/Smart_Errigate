@@ -1,6 +1,6 @@
 <?php 
 
-require('../model/manage-users.php');
+require('../model/tanks.php');
 
 $db = new Database();
 
@@ -12,13 +12,13 @@ if(isset($_POST['action']) && $_POST['action']== "view"){
         $output .= '<table class="table table-striped table-sm table-bordered">
         <thead>
             <tr class="text-center">
-                <th>ID</th>
-                <th>Username</th>
-                <th>E-mail</th>
-                <th>Phone</th>
-                <th>Credit</th>
-                <th>Farms</th>
-                <th>Action</th>
+                
+                <th>User ID</th>
+                <th>Tank name</th>
+                <th>level</th>
+                <th>refill</th>
+                <th>Rate</th>
+                <th>is_pump_open</th>
             </tr>
         </thead>
         <tbody>
@@ -26,11 +26,11 @@ if(isset($_POST['action']) && $_POST['action']== "view"){
         foreach($data as $row){
             $output .= '<tr class="text-center text-secondary">
             <td>'.$row['id'].'</td>
-            <td>'.$row['username'].'</td>
-            <td>'.$row['email'].'</td>
-            <td>'.$row['phone_number'].'</td>
-            <td>'.$row['credit'].'</td>
-            <td>'.$row['farm'].'</td>
+            <td>'.$row['user_id'].'</td>
+            <td>'.$row['level'].'</td>
+            <td>'.$row['refill'].'</td>
+            <td>'.$row['rate'].'</td>
+            <td>'.$row['is_pump_open'].'</td>
             <td>
                 <a href="#" title="View Details" class="text-success infoBtn" id="'.$row['id'].'">
                 <i class="fas fa-info-circle fa-lg"></i></a>&nbsp;&nbsp;
@@ -54,15 +54,14 @@ if(isset($_POST['action']) && $_POST['action']== "view"){
 
 //insert a customer
 if(isset($_POST['action']) && $_POST['action'] == "insert"){
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $password = md5($password);
-    $phone_number = $_POST['phone_number'];
-    $credit = $_POST['credit'];
-    $farm = $_POST['farm'];
+    $user_id = $_POST['user_id'];
+    $tank_name = $_POST['tank_name'];
+    $level = $_POST['level'];
+    $refill = md5($refill);
+    $rate = $_POST['rate'];
+    $is_pump_open = $_POST['is_pump_open'];   
 
-    $db->insert($username, $email, $password, $phone_number, $credit, $farm); 
+    $db->insert($user_id, $tank_name, $level, $refill, $rate, $is_pump_open); 
 }
 
 if(isset($_POST['edit_id'])){
@@ -80,7 +79,7 @@ if(isset($_POST['action']) && $_POST['action'] == 'update'){
     $credit = $_POST['credit'];
     $farm = $_POST['farm'];
 
-    $db->update($id,$username, $email, $phone_number, $credit, $farm);
+    $db->update($user_id, $tank_name, $level, $refill, $rate, $is_pump_open);
 }
 
 if(isset($_POST['del_id'])){
@@ -108,12 +107,12 @@ if(isset($_GET['export']) && $_GET['export'] == "excel"){
 
     foreach($data as $row){
         echo '<tr>
-        <td>'.$row['id'].'</td>
-        <td>'.$row['username'].'</td>
-        <td>'.$row['email'].'</td>
-        <td>'.$row['phone_number'].'</td>
-        <td>'.$row['credit'].'</td>
-        <td>'.$row['farm'].'</td>
+        <td>'.$row['user_name'].'</td>
+        <td>'.$row['tank_name'].'</td>
+        <td>'.$row['level'].'</td>
+        <td>'.$row['refill'].'</td>
+        <td>'.$row['rate'].'</td>
+        <td>'.$row['is_pump_open'].'</td>
         </tr>';
     }
     echo '</table>';
