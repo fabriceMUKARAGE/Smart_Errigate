@@ -93,6 +93,12 @@
           <i class="fa fa-calendar"></i>&nbsp;&nbsp;<?php echo "".date("Y/m/d"); ?></a>
         </div>
       </div>
+      <div class="ml-5 mr-5">
+      <hr class="my-1">
+    <div class="table-responsive" id="showUser">
+
+    </div>
+  </div>
     </div>
   </section>
 
@@ -111,13 +117,48 @@
                 <div class="modal-body px-4">
                     <form action="" method="post" id="form-data">
                         <div class="form-group">
-                            <input type="text" name="user_id" placeholder="User ID" class="form-control">
+                            <input type="text" name="user_id" placeholder="User ID" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="bed_name" placeholder="Bed Name" class="form-control">
+                            <input type="text" name="bed_name" placeholder="Bed Name" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <input type="submit" name="insert" id="insert" value="Submit" placeholder="Firstname"
+                                class="btn btn-success btn-block">
+                        </div>
+                    </form>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Edit user  Modal-->
+    <div class="modal fade" id="editModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Beds</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body px-4">
+                    <form action="" method="post" id="edit-form-data">
+                        <input type="hidden" name="id" id="id">
+                        <div class="form-group">
+                            <input type="text" name="username" id="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="phone_number" id="phone_number" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="update" id="update" value="Update" placeholder="Firstname"
                                 class="btn btn-success btn-block">
                         </div>
                     </form>
@@ -143,6 +184,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="script.js"></script>
 
   <script>
    let sidebar = document.querySelector(".sidebar");
@@ -155,7 +197,57 @@ sidebarBtn.onclick = function() {
   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 }
  </script>
- <script src="script.js"></script>
+ 
+<script type="text/javascript">
+$(document).ready(function() {
+
+    ShowAllUsers();
+
+    function ShowAllUsers() {
+          $.ajax({
+              url: ["../controller/beds.php"],
+              type: "POST",
+              data: {
+                  action: "view"
+              },
+              success:function(response) {
+                  // console.log(response);
+                  $("#showUser").html(response);
+                  $("table").DataTable();
+              }
+          });
+    }
+
+    // insert ajax request
+    $("#insert").click(function(e) {
+        if ($("#form-data")[0].checkValidity) {
+          e.preventDefault();
+          $.ajax({
+              url: ["../controller/beds.php"],
+              type: "POST",
+              data: $("#form-data").serialize() + "&action=insert",
+              success: function(response) {
+
+                Swal.fire({
+                  title: 'Bed added successfully!',
+                  showConfirmButton: false,
+                  type: 'success',
+                  icon: 'success',
+                  timer: 500,
+                  timerProgressBar: true,
+                })
+
+                $("#addModal").modal("hide");
+                $("#form-data")[0].reset();
+                ShowAllUsers();
+
+              }
+          });
+        }
+    });
+
+    })
+</script>
 
 </body>
 </html>

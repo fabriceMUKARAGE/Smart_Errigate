@@ -13,7 +13,7 @@ class Database
     {
         try {
             $this->conn = new PDO($this->dsn, $this->username, $this->pass);
-            echo "Succesfully Conected!";
+            // echo "Succesfully Conected!";
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -30,7 +30,7 @@ class Database
     public function read()
     {
         $data = array();
-        $sql = "SELECT beds.id, beds.user_id, customers.email, customers.farm, beds.bed_name FROM beds  INNER JOIN customers
+        $sql = "SELECT beds.id, beds.user_id, customers.username, customers.email, customers.farm, beds.bed_name FROM beds  INNER JOIN customers
         ON beds.user_id = customers.id ";
 
         $stmt = $this->conn->prepare($sql);
@@ -85,9 +85,6 @@ $ob = new Database();
 // print_r($ob->insert(6,"Bed2: strawberry"));
 // print_r($ob->read());
 // print_r($ob->getSensorBiId(2));
-// print_r($ob->update(2, "Dzifa","esth"));
+// print_r($ob->update(3, 6 ,"bed 2: cassava"));
 // print_r($ob->totalRowCount());
-// print_r($ob->addSensor(5,"temp1","Bed1","temperature"));
-// print_r($ob->addBed(5,"Bed1"));
-// print_r($ob->addTank(5,"Tank1"));
-// print_r($ob->delete(20));
+// print_r($ob->delete(2));
