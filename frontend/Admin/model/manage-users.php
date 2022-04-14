@@ -60,27 +60,6 @@ class Database
         return true;
     }
 
-    public function addSensor($user_id, $sensor_name,$location,$type){
-        $sql = "INSERT INTO sensor (user_id,sensor_name,location,type) VALUES (:user_id,:sensor_name,:location,:type)";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(['user_id' => $user_id, 'sensor_name' => $sensor_name, 'location' => $location, 'type' => $type]);
-        return true; 
-    }
-
-    public function addBed($user_id, $bed_name){
-        $sql = "INSERT INTO beds (user_id,bed_name) VALUES (:user_id,:bed_name)";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(['user_id' => $user_id, 'bed_name' => $bed_name]);
-        return true; 
-    }
-
-    public function addTank($user_id, $tank_name){
-        $sql = "INSERT INTO tanks (user_id,tank_name) VALUES (:user_id,:tank_name)";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(['user_id' => $user_id, 'tank_name' => $tank_name]);
-        return true; 
-    }
-
     public function delete($id)
     {
         $sql1 = "DELETE FROM customers WHERE id=:id";
@@ -118,4 +97,4 @@ $ob = new Database();
 // print_r($ob->addSensor(5,"temp1","Bed1","temperature"));
 // print_r($ob->addBed(5,"Bed1"));
 // print_r($ob->addTank(5,"Tank1"));
-// print_r($ob->delete(5));
+// print_r($ob->delete(20));

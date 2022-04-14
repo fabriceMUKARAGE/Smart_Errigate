@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>E-rrigate</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -15,7 +15,7 @@
   <div class="sidebar">
     <div class="logo-details">
       
-      <span class="logo_name"><br><img src="Elogo.png" alt="Logo image" width="40%" height="40%"></span>
+      <span class="logo_name"><br><img src="../Elogo.png" alt="Logo image" width="40%" height="40%"></span>
     </div>
       <ul class="nav-links">
         <li>
@@ -67,13 +67,13 @@
         <i class='bx bx-search' ></i>
       </div>
       <div class="addcustomer">
-        <button class="bt" type="button" data-toggle="modal"
+        <button class="btn btn-success" type="button" data-toggle="modal"
         data-target="#addModal"><i class="fas fa-user-plus fa-lg"></i>
         &nbsp;&nbsp;Add Customer</button>
         <!-- <i class='bx bx-chevron' ></i> -->
       </div>
       <div class="profile-details">
-        <img src="images/profile.jpg" alt="">
+        <img src="../images/profile.jpg" alt="">
         <span class="admin_name">Fabrice Mukarage</span>
         <i class='bx bx-chevron' ></i>
       </div>
@@ -87,7 +87,7 @@
         <div class="info1">
           <!-- <a class="sortDate"  href="#">Icon</a>
           <i class='bx bx-chevron' ></i> -->
-          <a href="action.php?export=excel" class="btn btn-success m-1 float-right">
+          <a href="../controller/manage-users.php?export=excel" class="btn btn-success m-1 float-right">
           <i class="fas fa-table fa-lg"></i>&nbsp;&nbsp;Export to Excel</a>
         </div>
         <div class="info">
@@ -170,10 +170,10 @@
                             <input type="text" name="username" id="username" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="email" id="email" class="form-control">
+                            <input type="email" name="email" id="email" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="email" name="phone_number" id="phone_number" class="form-control">
+                            <input type="text" name="phone_number" id="phone_number" class="form-control">
                         </div>
                         <div class="form-group">
                             <input type="text" name="credit" id="credit" class="form-control">
@@ -183,7 +183,7 @@
                         </div>
                         <div class="form-group">
                             <input type="submit" name="update" id="update" value="Update" placeholder="Firstname"
-                                class="btn btn-primary btn-block">
+                                class="btn btn-success btn-block">
                         </div>
                     </form>
                 </div>
@@ -238,7 +238,7 @@ $(document).ready(function() {
 
     function ShowAllUsers() {
           $.ajax({
-              url: ["action.php"],
+              url: ["../controller/manage-users.php"],
               type: "POST",
               data: {
                   action: "view"
@@ -257,7 +257,7 @@ $(document).ready(function() {
           if ($("#form-data")[0].checkValidity) {
               e.preventDefault();
               $.ajax({
-                  url: ["action.php"],
+                  url: ["../controller/manage-users.php"],
                   type: "POST",
                   data: $("#form-data").serialize() + "&action=insert",
                   success: function(response) {
@@ -280,7 +280,125 @@ $(document).ready(function() {
             }
       });
 
-   
+
+      // Edit user
+        $("body").on("click", ".editBtn", function(e) {
+          // console.log("working");
+          e.preventDefault();
+          edit_id = $(this).attr("id");
+          $.ajax({
+            url: "../controller/manage-users.php",
+            type: "POST",
+            data: {
+              edit_id: edit_id
+              },
+            success: function(response) {
+              console.log(response);
+              data = JSON.parse(response);
+              // console.log(data);
+              $("#id").val(data.id);
+              $("#username").val(data.username);
+              $("#email").val(data.email);
+              $("#phone_number").val(data.phone_number);
+              $("#credit").val(data.credit);
+              $("#farm").val(data.farm);
+            }
+            });
+        });
+
+      // Update ajax request
+      $("#update").click(function(e) {
+        if ($("#edit-form-data")[0].checkValidity) {
+            e.preventDefault();
+            $.ajax({
+            url: ["../controller/manage-users.php"],
+            type: "POST",
+            data: $("#edit-form-data").serialize() + "&action=update",
+            success: function(response) {
+
+              Swal.fire({
+                  title: 'User updated successfully!',
+                  showConfirmButton: false,
+                  type: 'success',
+                  icon: 'success',
+                  timer: 800,
+                  //timerProgressBar: true,
+              })
+
+              $("#editModal").modal("hide");
+              $("#edit-form-data")[0].reset();
+              ShowAllUsers();
+            }
+            });
+          }
+        });
+
+
+      // Delete ajax request 
+      $("body").on("click", ".delBtn", function(e) {
+          e.preventDefault();
+          var tr = $(this).closest("tr");
+          del_id = $(this).attr("id");
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                  url: '../controller/manage-users.php',
+                  type: 'POST',
+                  data: {
+                    del_id: del_id
+                  },
+                success: function(response) {
+                  tr.css('background-color', '#ff6666');
+                  Swal.fire({
+                    title: 'User deleted successfully!',
+                    showConfirmButton: false,
+                    type: 'success',
+                    icon: 'success',
+                    timer: 900,
+                    //timerProgressBar: true,
+                  })
+                  ShowAllUsers();
+                        }
+                    });
+
+                }
+            })
+
+        });
+
+
+      // Show users detail  page
+      $("body").on("click",".infoBtn",function(event){
+          event.preventDefault();
+          info_id = $(this).attr("id");
+          $.ajax({
+            url: "../controller/manage-users.php",
+            type: "POST",
+            data: {info_id: info_id},
+            success: function(response) {
+              //console.log(response);
+              data = JSON.parse(response);
+              Swal.fire({
+                title: '<strong>User info : ID '+data.id+'</strong>',
+                type: 'info',
+                html: '<b>Username:</b> '+data.username + '<br>' + 
+                      '<b>Email:</b> '+data.email + '<br>' + 
+                      '<b>Phone number:</b> '+ data.phone_number + '<br>' + 
+                      '<b>Credit:</b> '+data.credit + '<br>' +
+                      '<b>Farm:</b> '+data.farm
+              })
+            }
+          });
+      });
+
     })
 </script> 
 

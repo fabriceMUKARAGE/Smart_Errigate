@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>E-rrigate</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -15,7 +15,7 @@
   <div class="sidebar">
     <div class="logo-details">
       
-      <span class="logo_name"><br><img src="Elogo.png" alt="Logo image" width="40%" height="40%"></span>
+      <span class="logo_name"><br><img src="../Elogo.png" alt="Logo image" width="40%" height="40%"></span>
     </div>
       <ul class="nav-links">
         <li>
@@ -67,11 +67,11 @@
         <i class='bx bx-search' ></i>
       </div>
       <div class="addcustomer">
-        <button class="bt" type="button" data-toggle="modal"
+        <button class="btn btn-success" type="button" data-toggle="modal"
         data-target="#addModal">Add Farm Bed</button>
       </div>
       <div class="profile-details">
-        <img src="images/profile.jpg" alt="">
+        <img src="../images/profile.jpg" alt="">
         <span class="admin_name">Fabrice Mukarage</span>
         <i class='bx bx-chevron' ></i>
       </div>
