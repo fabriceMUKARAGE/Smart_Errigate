@@ -43,7 +43,7 @@ class Database
     }
 
 
-    public function getSensorBiId($id)
+    public function getTankBiId($id)
     { 
         $sql = "SELECT id, user_id, tank_name FROM tanks WHERE id=:id";
         $stmt = $this->conn->prepare($sql);
@@ -84,8 +84,8 @@ $ob = new Database();
 // print_r($ob->insert(6,"tank1"));
 // print_r($ob->insert(6,"tank2: strawberry"));
 // print_r($ob->read());
-// print_r($ob->getSensorBiId(2));
-// print_r($ob->update(2, "Dzifa","esth"));
+// print_r($ob->getTankBiId(2));
+// print_r($ob->update(4, 9,"tank 3"));
 // print_r($ob->totalRowCount());
 // print_r($ob->addSensor(5,"temp1","tank1","temperature"));
 // print_r($ob->addtank(5,"tank1"));

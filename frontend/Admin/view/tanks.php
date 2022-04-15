@@ -85,7 +85,8 @@
         <div class="info1">
           <!-- <a class="sortDate"  href="#">Icon</a>
           <i class='bx bx-chevron' ></i> -->
-          <a href="action.php?export=excel" class="btn btn-success m-1 float-right">
+          
+          <a href="../controller/tanks.php?export=excel" class="btn btn-success m-1 float-right">
           <i class="fas fa-table fa-lg"></i>&nbsp;&nbsp;Export to Excel</a>
         </div>
         <div class="info">
@@ -137,6 +138,40 @@
 
 
 
+
+    <!-- Edit user  Modal-->
+    <div class="modal fade" id="editModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Tank Info</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body px-4">
+                    <form action="" method="post" id="edit-form-data">
+                        <input type="hidden" name="id" id="id">
+                        <div class="form-group">
+                            <input type="text" name="user_id" id="user_id" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="tank_name" id="tank_name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="update" id="update" value="Update" placeholder="Firstname"
+                                class="btn btn-success btn-block">
+                        </div>
+                    </form>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
 
 
 
@@ -231,7 +266,7 @@ sidebarBtn.onclick = function() {
 
 
 
-      // Edit user
+      // Edit tank
       $("body").on("click", ".editBtn", function(e) {
           // console.log("working");
           e.preventDefault();
@@ -246,6 +281,7 @@ sidebarBtn.onclick = function() {
               console.log(response);
               data = JSON.parse(response);
               // console.log(data);
+              $("#id").val(data.id);
               $("#user_id").val(data.user_id);
               $("#tank_name").val(data.tank_name);
               
@@ -254,18 +290,122 @@ sidebarBtn.onclick = function() {
         });
 
 
+            // Update ajax request
+    $("#update").click(function(e) {
+        if ($("#edit-form-data")[0].checkValidity) {
+          e.preventDefault();
+          $.ajax({
+            url: ["../controller/tanks.php"],
+            type: "POST",
+            data: $("#edit-form-data").serialize() + "&action=update",
+            success: function(response) {
+
+              Swal.fire({
+                  title: 'Tank info updated successfully!',
+                  showConfirmButton: false,
+                  type: 'success',
+                  icon: 'success',
+                  timer: 800,
+                  //timerProgressBar: true,
+              })
+
+              $("#editModal").modal("hide");
+              $("#edit-form-data")[0].reset();
+              ShowAllUsers();
+            }
+          });
+        }
+    });
+
+ // Delete ajax request 
+ $("body").on("click", ".delBtn", function(e) {
+          e.preventDefault();
+          var tr = $(this).closest("tr");
+          del_id = $(this).attr("id");
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                  url: '../controller/tanks.php',
+                  type: 'POST',
+                  data: {
+                    del_id: del_id
+                  },
+                success: function(response) {
+                  tr.css('background-color', '#ff6666');
+                  Swal.fire({
+                    title: 'User deleted successfully!',
+                    showConfirmButton: false,
+                    type: 'success',
+                    icon: 'success',
+                    timer: 900,
+                    //timerProgressBar: true,
+                  })
+                  ShowAllUsers();
+                        }
+                    });
+
+                }
+            })
+
+        });
 
 
 
 
 
-
-
-
-
-
+     // Show users detail  page
+     $("body").on("click",".infoBtn",function(event){
+          event.preventDefault();
+          info_id = $(this).attr("id");
+          $.ajax({
+            url: "../controller/tanks.php",
+            type: "POST",
+            data: {info_id: info_id},
+            success: function(response) {
+              //console.log(response);
+              data = JSON.parse(response);
+              Swal.fire({
+                title: '<strong>User info : ID '+data.id+'</strong>',
+                type: 'info',
+                html: '<b>User ID:</b> '+data.user_id + '<br>' + 
+                      '<b>Tank Name:</b> '+data.tank_name 
+                     
+              })
+            }
+          });
+      });
 
     })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script> 
 
 
