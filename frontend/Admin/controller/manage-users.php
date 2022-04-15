@@ -65,6 +65,8 @@ if(isset($_POST['action']) && $_POST['action'] == "insert"){
     $db->insert($username, $email, $password, $phone_number, $credit, $farm); 
 }
 
+
+//update a bed
 if(isset($_POST['edit_id'])){
     $id = $_POST['edit_id'];
 

@@ -43,7 +43,7 @@ class Database
     }
 
 
-    public function getSensorBiId($id)
+    public function getBedBiId($id)
     { 
         $sql = "SELECT id, user_id, bed_name FROM beds WHERE id=:id";
         $stmt = $this->conn->prepare($sql);
@@ -84,7 +84,7 @@ $ob = new Database();
 // print_r($ob->insert(6,"Bed1: tomato"));
 // print_r($ob->insert(6,"Bed2: strawberry"));
 // print_r($ob->read());
-// print_r($ob->getSensorBiId(2));
+// print_r($ob->getBedBiId(3));
 // print_r($ob->update(3, 6 ,"bed 2: cassava"));
 // print_r($ob->totalRowCount());
 // print_r($ob->delete(2));

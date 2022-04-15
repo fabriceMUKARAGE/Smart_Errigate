@@ -152,10 +152,10 @@
                     <form action="" method="post" id="edit-form-data">
                         <input type="hidden" name="id" id="id">
                         <div class="form-group">
-                            <input type="text" name="username" id="username" class="form-control">
+                            <input type="text" name="user_id" id="user_id" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="phone_number" id="phone_number" class="form-control">
+                            <input type="text" name="bed_name" id="bed_name" class="form-control">
                         </div>
                         <div class="form-group">
                             <input type="submit" name="update" id="update" value="Update" placeholder="Firstname"
@@ -244,6 +244,119 @@ $(document).ready(function() {
               }
           });
         }
+    });
+
+    // Edit user
+    $("body").on("click", ".editBtn", function(e) {
+        // console.log("working");
+        e.preventDefault();
+        edit_id = $(this).attr("id");
+          $.ajax({
+            url: "../controller/beds.php",
+            type: "POST",
+            data: {
+              edit_id: edit_id
+            },
+            success: function(response) {
+              console.log(response);
+              data = JSON.parse(response);
+              // console.log(data);
+              $("#id").val(data.id);
+              $("#user_id").val(data.user_id);
+              $("#bed_name").val(data.bed_name);
+            }
+          });
+    });
+
+    // Update ajax request
+    $("#update").click(function(e) {
+        if ($("#edit-form-data")[0].checkValidity) {
+          e.preventDefault();
+          $.ajax({
+            url: ["../controller/beds.php"],
+            type: "POST",
+            data: $("#edit-form-data").serialize() + "&action=update",
+            success: function(response) {
+
+              Swal.fire({
+                  title: 'Bed updated successfully!',
+                  showConfirmButton: false,
+                  type: 'success',
+                  icon: 'success',
+                  timer: 800,
+                  //timerProgressBar: true,
+              })
+
+              $("#editModal").modal("hide");
+              $("#edit-form-data")[0].reset();
+              ShowAllUsers();
+            }
+          });
+        }
+    });
+
+    // Delete ajax request 
+    $("body").on("click", ".delBtn", function(e) {
+        e.preventDefault();
+        var tr = $(this).closest("tr");
+        del_id = $(this).attr("id");
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                  url: '../controller/beds.php',
+                  type: 'POST',
+                  data: {
+                    del_id: del_id
+                  },
+                success: function(response) {
+                  tr.css('background-color', '#ff6666');
+                  Swal.fire({
+                    title: 'Bed deleted successfully!',
+                    showConfirmButton: false,
+                    type: 'success',
+                    icon: 'success',
+                    timer: 900,
+                    //timerProgressBar: true,
+                  })
+                  ShowAllUsers();
+                        }
+                    });
+
+                }
+            })
+
+        });
+
+    // Show beds detail  page
+    $("body").on("click",".infoBtn",function(event){
+        event.preventDefault();
+        info_id = $(this).attr("id");
+        $.ajax({
+          url: "../controller/beds.php",
+          type: "POST",
+          data: {info_id: info_id},
+          success: function(response) {
+            //console.log(response);
+            data = JSON.parse(response);
+            Swal.fire({
+              title: '<strong>User info : ID '+data.id+'</strong>',
+              type: 'info',
+              html: '<b>Username:</b> '+data.username + '<br>' + 
+                      '<b>Email:</b> '+data.email + '<br>' + 
+                      '<b>Phone number:</b> '+ data.phone_number + '<br>' + 
+                      '<b>Credit:</b> '+data.credit + '<br>' +
+                      '<b>Farm:</b> '+data.farm
+            })
+          }
+        });
     });
 
     })

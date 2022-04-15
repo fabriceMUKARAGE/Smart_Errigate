@@ -60,4 +60,25 @@ if(isset($_POST['action']) && $_POST['action'] == "insert"){
     $db->insert($user_id, $bed_name); 
 }
 
+//update a bed
+if(isset($_POST['edit_id'])){
+    $id = $_POST['edit_id'];
+
+    $row = $db->getBedBiId($id);
+    echo json_encode($row);
+}
+
+if(isset($_POST['action']) && $_POST['action'] == 'update'){
+    $id = $_POST['id'];
+    $user_id = $_POST['user_id'];
+    $bed_name = $_POST['bed_name'];
+
+    $db->update($id,$user_id, $bed_name);
+}
+
+if(isset($_POST['del_id'])){
+    $id = $_POST['del_id'];
+
+    $db->delete($id);
+}
 ?>
