@@ -54,7 +54,7 @@
           </a>
         </li>
         <li class="log_out">
-          <a href="#">
+          <a href="../../../index.php">
             <i class='bx bx-log-out'></i>
             <span class="links_logout">Sign out</span>
           </a>

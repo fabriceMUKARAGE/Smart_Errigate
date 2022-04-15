@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <link rel="stylesheet" href="./home.css">
+    <link rel="stylesheet" href="./index.css">
     
     <title>E-rrigate</title>
   </head>
@@ -47,7 +47,7 @@
         </div>
         <div class="txt">
             <p><span>Automatic Irrigation</span><br>has never been<br>this easy</p>
-            <a class="bt"  href="../Admin/loginAdmin.html"><button style="background-color: #283F18; color:white; border-radius:14px;" type="submit" id='connect'>Admin Login</button></a>
-            <a class="bt" href="../user/loginUser.html"><button style="background-color: #283F18; color:white; border-radius:14px;" type="submit" id='connect'>User Login</button></a>
+            <a class="bt"  href="./frontend/Admin/loginAdmin.php"><button style="background-color: #283F18; color:white; border-radius:14px;" type="submit" id='connect'>Admin Login</button></a>
+            <a class="bt" href="./frontend/user/loginUser.php"><button style="background-color: #283F18; color:white; border-radius:14px;" type="submit" id='connect'>User Login</button></a>
         </div>
     </div>
