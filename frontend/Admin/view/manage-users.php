@@ -101,7 +101,7 @@
 
     </div>
   </div>
-  </div>
+    </div>
   </section>
   
 
@@ -120,22 +120,22 @@
                 <div class="modal-body px-4">
                     <form action="" method="post" id="form-data">
                         <div class="form-group">
-                            <input type="text" name="username" placeholder="Username" class="form-control" required>
+                            <input type="text" name="username" placeholder="Username" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="email" placeholder="Email" class="form-control" required>
+                            <input type="text" name="email" placeholder="Email" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="email" name="password" placeholder="Password" class="form-control" required>
+                            <input type="email" name="password" placeholder="Password" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="phone_number" placeholder="Phone Number" class="form-control" required>
+                            <input type="text" name="phone_number" placeholder="Phone Number" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="credit" placeholder="Credit" class="form-control" required>
+                            <input type="text" name="credit" placeholder="Credit" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="farm" placeholder="Farm Name" class="form-control" required>
+                            <input type="text" name="farm" placeholder="Farm Name" class="form-control">
                         </div>
                         <div class="form-group">
                             <input type="submit" name="insert" id="insert" value="Add User" placeholder="Firstname"
