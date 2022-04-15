@@ -1,3 +1,8 @@
+<?php
+session_start();
+$Email = $_SESSION['email'];
+// echo "Welcome " . $Email;
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -85,7 +90,7 @@
         <div class="info1">
           <!-- <a class="sortDate"  href="#">Icon</a>
           <i class='bx bx-chevron' ></i> -->
-          <a href="action.php?export=excel" class="btn btn-success m-1 float-right">
+          <a href="../controller/beds.php?export=excel" class="btn btn-success m-1 float-right">
           <i class="fas fa-table fa-lg"></i>&nbsp;&nbsp;Export to Excel</a>
         </div>
         <div class="info">
@@ -349,11 +354,8 @@ $(document).ready(function() {
             Swal.fire({
               title: '<strong>User info : ID '+data.id+'</strong>',
               type: 'info',
-              html: '<b>Username:</b> '+data.username + '<br>' + 
-                      '<b>Email:</b> '+data.email + '<br>' + 
-                      '<b>Phone number:</b> '+ data.phone_number + '<br>' + 
-                      '<b>Credit:</b> '+data.credit + '<br>' +
-                      '<b>Farm:</b> '+data.farm
+              html: '<b>User ID:</b> '+data.user_id + '<br>' + 
+                      '<b>Bed Name:</b> '+data.bed_name
             })
           }
         });

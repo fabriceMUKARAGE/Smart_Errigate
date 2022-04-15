@@ -33,7 +33,7 @@
 
             //there will be two options for this coz i have admiin and student interface
             if($result -> fetch_assoc()) {
-                header( 'Location: adminHome.php');
+                header( 'Location: ./view/manage-users.php');
 
             }
             else {

@@ -17,7 +17,7 @@ if(isset($_POST['action']) && $_POST['action']== "view"){
                 <th>Farmers</th>
                 <th>Email</th>
                 <th>Farms</th>
-                <th>Bed name</th>
+                <th>Bed Name</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -80,5 +80,34 @@ if(isset($_POST['del_id'])){
     $id = $_POST['del_id'];
 
     $db->delete($id);
+}
+
+if(isset($_POST['info_id'])){
+    $id = $_POST['info_id'];
+    $row = $db->getBedBiId($id);
+    echo json_encode($row);
+}
+
+if(isset($_GET['export']) && $_GET['export'] == "excel"){
+    header("Content-Type: application/xls");
+    header("Content-Disposition: attachment; filename=beds.xls");
+    header("pragma: no-cache");
+    header("Expires: 0");
+
+    $data = $db->read();
+    echo '<table border="1">';
+    echo '<tr><th>ID</th><th>User ID</th><th>Farmers</th><th>Email</th><th>Farms</th><th>Bed Name</th>';
+
+    foreach($data as $row){
+        echo '<tr>
+        <td>'.$row['id'].'</td>
+        <td>'.$row['user_id'].'</td>
+        <td>'.$row['username'].'</td>
+        <td>'.$row['email'].'</td>
+        <td>'.$row['farm'].'</td>
+        <td>'.$row['bed_name'].'</td>
+        </tr>';
+    }
+    echo '</table>';
 }
 ?>
