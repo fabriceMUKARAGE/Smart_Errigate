@@ -18,7 +18,7 @@ if(isset($_POST['action']) && $_POST['action']== "view"){
                 <th>Farmers</th>
                 <th>Email</th>
                 <th>Farms</th>
-                <th>Bed Name</th>
+                <th>Tank Name</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -63,54 +63,55 @@ if(isset($_POST['action']) && $_POST['action'] == "insert"){
 if(isset($_POST['edit_id'])){
     $id = $_POST['edit_id'];
 
-    $row = $db->getUserBiId($id);
+    $row = $db->getTankBiId($id);
     echo json_encode($row);
 }
 
 if(isset($_POST['action']) && $_POST['action'] == 'update'){
-    $id = $_POST['user_id'];
-    $username = $_POST['tank_name'];
-    $db->update($user_id, $tank_name);
+    $id = $_POST['id'];
+    $user_id = $_POST['user_id'];
+    $tank_name = $_POST['tank_name'];
+    $db->update($id,$user_id, $tank_name);
 }
 
 
 
 
 
-// if(isset($_POST['del_id'])){
-//     $id = $_POST['del_id'];
+if(isset($_POST['del_id'])){
+    $id = $_POST['del_id'];
 
-//     $db->delete($id);
-// }
+    $db->delete($id);
+}
 
-// if(isset($_POST['info_id'])){
-//     $id = $_POST['info_id'];
-//     $row = $db->getUserBiId($id);
-//     echo json_encode($row);
-// }
+if(isset($_POST['info_id'])){
+    $id = $_POST['info_id'];
+    $row = $db->getTankBiId($id);
+    echo json_encode($row);
+}
 
 
-// if(isset($_GET['export']) && $_GET['export'] == "excel"){
-//     header("Content-Type: application/xls");
-//     header("Content-Disposition: attachment; filename=users.xls");
-//     header("pragma: no-cache");
-//     header("Expires: 0");
+if(isset($_GET['export']) && $_GET['export'] == "excel"){
+    header("Content-Type: application/xls");
+    header("Content-Disposition: attachment; filename=users.xls");
+    header("pragma: no-cache");
+    header("Expires: 0");
 
-//     $data = $db->read();
-//     echo '<table border="1">';
-//     echo '<tr><th>ID</th><th>Username</th><th>Email</th><th>Phone number</th><th>Credit</th><th>Farms</th>';
+    $data = $db->read();
+    echo '<table border="1">';
+    echo '<tr><th>ID</th><th>Username</th><th>Email</th><th>Phone number</th><th>Credit</th><th>Farms</th>';
 
-//     foreach($data as $row){
-//         echo '<tr>
-//         <td>'.$row['user_name'].'</td>
-//         <td>'.$row['tank_name'].'</td>
-//         <td>'.$row['level'].'</td>
-//         <td>'.$row['refill'].'</td>
-//         <td>'.$row['rate'].'</td>
-//         <td>'.$row['is_pump_open'].'</td>
-//         </tr>';
-//     }
-//     echo '</table>';
-// }
+    foreach($data as $row){
+        echo '<tr>
+        <td>'.$row['ID'].'</td>
+        <td>'.$row['User_ID'].'</td>
+        <td>'.$row['Farmers'].'</td>
+        <td>'.$row['Email'].'</td>
+        <td>'.$row['Farms'].'</td>
+        <td>'.$row['Tank_name'].'</td>
+        </tr>';
+    }
+    echo '</table>';
+}
 
 ?>
