@@ -13,12 +13,13 @@ if(isset($_POST['action']) && $_POST['action']== "view"){
         <thead>
             <tr class="text-center">
                 
+                <th>ID</th>
                 <th>User ID</th>
-                <th>Tank name</th>
-                <th>level</th>
-                <th>refill</th>
-                <th>Rate</th>
-                <th>is_pump_open</th>
+                <th>Farmers</th>
+                <th>Email</th>
+                <th>Farms</th>
+                <th>Bed Name</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -27,10 +28,10 @@ if(isset($_POST['action']) && $_POST['action']== "view"){
             $output .= '<tr class="text-center text-secondary">
             <td>'.$row['id'].'</td>
             <td>'.$row['user_id'].'</td>
-            <td>'.$row['level'].'</td>
-            <td>'.$row['refill'].'</td>
-            <td>'.$row['rate'].'</td>
-            <td>'.$row['is_pump_open'].'</td>
+            <td>'.$row['username'].'</td>
+            <td>'.$row['email'].'</td>
+            <td>'.$row['farm'].'</td>
+            <td>'.$row['tank_name'].'</td>
             <td>
                 <a href="#" title="View Details" class="text-success infoBtn" id="'.$row['id'].'">
                 <i class="fas fa-info-circle fa-lg"></i></a>&nbsp;&nbsp;
@@ -56,12 +57,7 @@ if(isset($_POST['action']) && $_POST['action']== "view"){
 if(isset($_POST['action']) && $_POST['action'] == "insert"){
     $user_id = $_POST['user_id'];
     $tank_name = $_POST['tank_name'];
-    $level = $_POST['level'];
-    $refill = md5($refill);
-    $rate = $_POST['rate'];
-    $is_pump_open = $_POST['is_pump_open'];   
-
-    $db->insert($user_id, $tank_name, $level, $refill, $rate, $is_pump_open); 
+    $db->insert($user_id, $tank_name); 
 }
 
 if(isset($_POST['edit_id'])){
@@ -72,50 +68,49 @@ if(isset($_POST['edit_id'])){
 }
 
 if(isset($_POST['action']) && $_POST['action'] == 'update'){
-    $id = $_POST['id'];
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $phone_number = $_POST['phone_number'];
-    $credit = $_POST['credit'];
-    $farm = $_POST['farm'];
-
-    $db->update($user_id, $tank_name, $level, $refill, $rate, $is_pump_open);
-}
-
-if(isset($_POST['del_id'])){
-    $id = $_POST['del_id'];
-
-    $db->delete($id);
-}
-
-if(isset($_POST['info_id'])){
-    $id = $_POST['info_id'];
-    $row = $db->getUserBiId($id);
-    echo json_encode($row);
+    $id = $_POST['user_id'];
+    $username = $_POST['tank_name'];
+    $db->update($user_id, $tank_name);
 }
 
 
-if(isset($_GET['export']) && $_GET['export'] == "excel"){
-    header("Content-Type: application/xls");
-    header("Content-Disposition: attachment; filename=users.xls");
-    header("pragma: no-cache");
-    header("Expires: 0");
 
-    $data = $db->read();
-    echo '<table border="1">';
-    echo '<tr><th>ID</th><th>Username</th><th>Email</th><th>Phone number</th><th>Credit</th><th>Farms</th>';
 
-    foreach($data as $row){
-        echo '<tr>
-        <td>'.$row['user_name'].'</td>
-        <td>'.$row['tank_name'].'</td>
-        <td>'.$row['level'].'</td>
-        <td>'.$row['refill'].'</td>
-        <td>'.$row['rate'].'</td>
-        <td>'.$row['is_pump_open'].'</td>
-        </tr>';
-    }
-    echo '</table>';
-}
+
+// if(isset($_POST['del_id'])){
+//     $id = $_POST['del_id'];
+
+//     $db->delete($id);
+// }
+
+// if(isset($_POST['info_id'])){
+//     $id = $_POST['info_id'];
+//     $row = $db->getUserBiId($id);
+//     echo json_encode($row);
+// }
+
+
+// if(isset($_GET['export']) && $_GET['export'] == "excel"){
+//     header("Content-Type: application/xls");
+//     header("Content-Disposition: attachment; filename=users.xls");
+//     header("pragma: no-cache");
+//     header("Expires: 0");
+
+//     $data = $db->read();
+//     echo '<table border="1">';
+//     echo '<tr><th>ID</th><th>Username</th><th>Email</th><th>Phone number</th><th>Credit</th><th>Farms</th>';
+
+//     foreach($data as $row){
+//         echo '<tr>
+//         <td>'.$row['user_name'].'</td>
+//         <td>'.$row['tank_name'].'</td>
+//         <td>'.$row['level'].'</td>
+//         <td>'.$row['refill'].'</td>
+//         <td>'.$row['rate'].'</td>
+//         <td>'.$row['is_pump_open'].'</td>
+//         </tr>';
+//     }
+//     echo '</table>';
+// }
 
 ?>

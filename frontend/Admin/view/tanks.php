@@ -93,6 +93,12 @@
           <i class="fa fa-calendar"></i>&nbsp;&nbsp;<?php echo "".date("Y/m/d"); ?></a>
         </div>
       </div>
+      <div class="ml-5 mr-5">
+      <hr class="my-1">
+    <div class="table-responsive" id="showUser">
+
+    </div>
+  </div>
     </div>
   </section>
 
@@ -129,6 +135,18 @@
         </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+
+    
+
   <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -143,6 +161,7 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="script.js"></script>
 
   <script>
    let sidebar = document.querySelector(".sidebar");
@@ -155,7 +174,109 @@ sidebarBtn.onclick = function() {
   sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 }
  </script>
- <script src="script.js"></script>
+ <script type="text/javascript">
+
+ <!-- ///////////////////////////// -->
+
+
+
+ $(document).ready(function() {
+    
+    ShowAllUsers();
+
+    function ShowAllUsers() {
+          $.ajax({
+              url: ["../controller/tanks.php"],
+              type: "POST",
+              data: {
+                  action: "view"
+              },
+              success:function(response) {
+                  // console.log(response);
+                  $("#showUser").html(response);
+                  $("table").DataTable();
+              }
+          });
+      }
+
+
+      // insert ajax request
+      $("#insert").click(function(e) {
+          if ($("#form-data")[0].checkValidity) {
+              e.preventDefault();
+              $.ajax({
+                  url: ["../controller/tanks.php"],
+                  type: "POST",
+                  data: $("#form-data").serialize() + "&action=insert",
+                  success: function(response) {
+
+                      Swal.fire({
+                      title: 'Tank added successfully!',
+                      showConfirmButton: false,
+                      type: 'success',
+                      icon: 'success',
+                      timer: 500,
+                      timerProgressBar: true,
+                  })
+
+                  $("#addModal").modal("hide");
+                  $("#form-data")[0].reset();
+                  ShowAllUsers();
+
+                    }
+                });
+            }
+      });
+
+
+
+
+      // Edit user
+      $("body").on("click", ".editBtn", function(e) {
+          // console.log("working");
+          e.preventDefault();
+          edit_id = $(this).attr("id");
+          $.ajax({
+            url: "../controller/tanks.php",
+            type: "POST",
+            data: {
+              edit_id: edit_id
+              },
+            success: function(response) {
+              console.log(response);
+              data = JSON.parse(response);
+              // console.log(data);
+              $("#user_id").val(data.user_id);
+              $("#tank_name").val(data.tank_name);
+              
+            }
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+    })
+</script> 
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
