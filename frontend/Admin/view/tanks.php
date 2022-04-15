@@ -1,6 +1,6 @@
 <?php
-session_start();
-$Email = $_SESSION['email'];
+// session_start();
+// $Email = $_SESSION['email'];
 // echo "Welcome " . $Email;
 ?>
 <!DOCTYPE html>

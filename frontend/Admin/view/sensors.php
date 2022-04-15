@@ -1,7 +1,7 @@
 <?php
-session_start();
-$Email = $_SESSION['email'];
-// echo "Welcome " . $Email;
+// session_start();
+// $Email = $_SESSION['email'];
+// // echo "Welcome " . $Email;
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
