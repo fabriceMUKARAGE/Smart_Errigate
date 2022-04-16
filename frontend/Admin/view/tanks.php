@@ -292,7 +292,7 @@ sidebarBtn.onclick = function() {
         });
 
 
-            // Update ajax request
+    // Update ajax request
     $("#update").click(function(e) {
         if ($("#edit-form-data")[0].checkValidity) {
           e.preventDefault();
@@ -409,16 +409,6 @@ sidebarBtn.onclick = function() {
 
 
 </script> 
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>

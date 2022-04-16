@@ -90,7 +90,7 @@
         <div class="info1">
           <!-- <a class="sortDate"  href="#">Icon</a>
           <i class='bx bx-chevron' ></i> -->
-          <a href="action.php?export=excel" class="btn btn-success m-1 float-right">
+          <a href="../controller/sensors.php?export=excel" class="btn btn-success m-1 float-right">
           <i class="fas fa-table fa-lg"></i>&nbsp;&nbsp;Export to Excel</a>
         </div>
         <div class="info">
@@ -169,6 +169,12 @@
                             <input type="text" name="sensor_name" id="sensor_name" class="form-control">
                         </div>
                         <div class="form-group">
+                            <input type="text" name="location" id="location" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="type" id="type" class="form-control">
+                        </div>
+                        <div class="form-group">
                             <input type="submit" name="update" id="update" value="Update" placeholder="Firstname"
                                 class="btn btn-success btn-block">
                         </div>
@@ -192,9 +198,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-    </script
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
     </script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.js"></script>
@@ -232,14 +237,9 @@ $(document).ready(function() {
           });
       }
 
-    })
 
-
-
-
-
-  // insert ajax request
-  $("#insert").click(function(e) {
+ // insert ajax request
+ $("#insert").click(function(e) {
           if ($("#form-data")[0].checkValidity) {
               e.preventDefault();
               $.ajax({
@@ -269,23 +269,135 @@ $(document).ready(function() {
 
 
 
+       // Edit tank
+       $("body").on("click", ".editBtn", function(e) {
+          // console.log("working");
+          e.preventDefault();
+          edit_id = $(this).attr("id");
+          $.ajax({
+            url: "../controller/sensors.php",
+            type: "POST",
+            data: {
+              edit_id: edit_id
+              },
+            success: function(response) {
+              console.log(response);
+              data = JSON.parse(response);
+              // console.log(data);
+              $("#id").val(data.id);
+              $("#user_id").val(data.user_id);
+              $("#sensor_name").val(data.sensor_name);
+              $("#location").val(data.location);
+              $("#type").val(data.type);
+              
+            }
+            });
+        });
+ 
+
+    // Update ajax request
+    $("#update").click(function(e) {
+        if ($("#edit-form-data")[0].checkValidity) {
+          e.preventDefault();
+          $.ajax({
+            url: ["../controller/sensors.php"],
+            type: "POST",
+            data: $("#edit-form-data").serialize() + "&action=update",
+            success: function(response) {
+
+              Swal.fire({
+                  title: 'Sensor info updated successfully!',
+                  showConfirmButton: false,
+                  type: 'success',
+                  icon: 'success',
+                  timer: 800,
+                  //timerProgressBar: true,
+              })
+
+              $("#editModal").modal("hide");
+              $("#edit-form-data")[0].reset();
+              ShowAllUsers();
+            }
+          });
+        }
+    });
+
+
+// Delete ajax request 
+ $("body").on("click", ".delBtn", function(e) {
+          e.preventDefault();
+          var tr = $(this).closest("tr");
+          del_id = $(this).attr("id");
+          Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                  url: '../controller/sensors.php',
+                  type: 'POST',
+                  data: {
+                    del_id: del_id
+                  },
+                success: function(response) {
+                  tr.css('background-color', '#ff6666');
+                  Swal.fire({
+                    title: 'User deleted successfully!',
+                    showConfirmButton: false,
+                    type: 'success',
+                    icon: 'success',
+                    timer: 900,
+                    //timerProgressBar: true,
+                  })
+                  ShowAllUsers();
+                        }
+                    });
+
+                }
+            })
+
+        });
 
 
 
 
+// // Show users detail  page
+$("body").on("click",".infoBtn",function(event){
+          event.preventDefault();
+          info_id = $(this).attr("id");
+          $.ajax({
+            url: "../controller/sensors.php",
+            type: "POST",
+            data: {info_id: info_id},
+            success: function(response) {
+              //console.log(response);
+              data = JSON.parse(response);
+              Swal.fire({
+                title: '<strong>User info : ID '+data.id+'</strong>',
+                type: 'info',
+                html: '<b>User ID:</b> '+data.user_id + '<br>' + 
+                      '<b>Sensor Name:</b> '+data.sensor_name + '<br>' +
+                      '<b>Location:</b> '+data.location + '<br>' +
+                      '<b>Type:</b> '+data.type 
+              })
+            }
+          });
+      });
+    })
 
+
+
+
+ 
 
 
 
 
 </script>
-
-
-
-
-
-
-
-
 </body>
 </html>
