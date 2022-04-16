@@ -1,6 +1,6 @@
 <?php
-session_start();
-$Email = $_SESSION['email'];
+// session_start();
+// $Email = $_SESSION['email'];
 // echo "Welcome " . $Email;
 ?>
 <!DOCTYPE html>
@@ -216,10 +216,7 @@ sidebarBtn.onclick = function() {
  </script>
  <script type="text/javascript">
 
- <!-- ///////////////////////////// -->
-
-
-
+ 
  $(document).ready(function() {
     
     ShowAllUsers();

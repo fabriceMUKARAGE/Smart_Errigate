@@ -53,7 +53,7 @@ if(isset($_POST['action']) && $_POST['action']== "view"){
     }
 }
 
-//insert a customer
+//insert a tank
 if(isset($_POST['action']) && $_POST['action'] == "insert"){
     $user_id = $_POST['user_id'];
     $tank_name = $_POST['tank_name'];
@@ -93,22 +93,22 @@ if(isset($_POST['info_id'])){
 
 if(isset($_GET['export']) && $_GET['export'] == "excel"){
     header("Content-Type: application/xls");
-    header("Content-Disposition: attachment; filename=users.xls");
+    header("Content-Disposition: attachment; filename=tanks.xls");
     header("pragma: no-cache");
     header("Expires: 0");
 
     $data = $db->read();
     echo '<table border="1">';
-    echo '<tr><th>ID</th><th>Username</th><th>Email</th><th>Phone number</th><th>Credit</th><th>Farms</th>';
+    echo '<tr><th>ID</th><th>User ID</th><th>Farmers</th><th>Email</th><th>Farms</th><th>Tank Name</th>';
 
     foreach($data as $row){
         echo '<tr>
-        <td>'.$row['ID'].'</td>
-        <td>'.$row['User_ID'].'</td>
-        <td>'.$row['Farmers'].'</td>
-        <td>'.$row['Email'].'</td>
-        <td>'.$row['Farms'].'</td>
-        <td>'.$row['Tank_name'].'</td>
+        <td>'.$row['id'].'</td>
+        <td>'.$row['user_id'].'</td>
+        <td>'.$row['username'].'</td>
+        <td>'.$row['email'].'</td>
+        <td>'.$row['farm'].'</td>
+        <td>'.$row['tank_name'].'</td>
         </tr>';
     }
     echo '</table>';
