@@ -28,7 +28,7 @@ body {
 	border: 1px solid #4e3914;
 	font-size: 18px;
 	font-weight: 300;
-	text-transform: uppercase;
+	/* text-transform: uppercase; */
 	background: #ffffff;
 	border-radius: 4.8px;
 	padding: 5px 5px;

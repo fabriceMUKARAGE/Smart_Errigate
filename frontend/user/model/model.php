@@ -32,10 +32,36 @@ class Database
         return $data;
     }
 
+    public function readFeaturedBeds($user_id)
+    {
+        $data = array();
+        $sql = "SELECT id, user_id, bed_name, humidity, temperature, pH, nitrogen, phosphorous, potassium, water_used  FROM beds WHERE user_id=:user_id LIMIT 3";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['user_id' => $user_id]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
     public function readTanks($user_id)
     {
         $data = array();
         $sql = "SELECT id, user_id, tank_name, level, refill, rate FROM tanks WHERE user_id=:user_id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute(['user_id' => $user_id]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function readFeaturedTanks($user_id)
+    {
+        $data = array();
+        $sql = "SELECT id, user_id, tank_name, level, refill, rate FROM tanks WHERE user_id=:user_id LIMIT 3";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['user_id' => $user_id]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -107,7 +133,9 @@ class Database
 }
 $ob = new Database();
 // print_r($ob->readBeds(6));
+// print_r($ob->readFeaturedBeds(6));
 // print_r($ob->readTanks(6));
+// print_r($ob->readFeaturedTanks(6));
 // print_r($ob->readSensors(6));
 // print_r($ob->readFarmWeather(6));
 // print_r($ob->getUserBiId(6));
