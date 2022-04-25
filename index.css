@@ -12,10 +12,7 @@ body{
     font-family: Roboto;
     font-weight: Bold;
     font-size: 24px;
-    color: rgba(255,255,255,1);
-    
-    
-    
+    color: rgba(255,255,255,1);  
 }
 
 .Imagebg{
@@ -36,7 +33,6 @@ span{
     font-weight: Bold;
     font-size: 24px;
 }
-
 
 @media (min-width: 992px){
     .nav-item{

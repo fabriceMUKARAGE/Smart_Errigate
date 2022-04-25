@@ -8,7 +8,6 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="./index.css">
-    
     <title>E-rrigate</title>
   </head>
   <body>
@@ -27,14 +26,11 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                   </li>
-                  <li class="nav-item ">
-                    <a class="nav-link" href="#">Options</a>
-                  </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#"><button style="background-color: #283F18; color:white; border-radius:14px;" type="submit" id='connect'>Connect</button></a>
+                    <a class="nav-link" href="#"><button style="background-color: #283F18; color:white; border-radius:14px;" type="submit" id='connect'>Login</button></a>
                   </li>
                 </ul>
               </div>
@@ -51,3 +47,5 @@
             <a class="bt" href="./frontend/user/loginUser.php"><button style="background-color: #283F18; color:white; border-radius:14px;" type="submit" id='connect'>User Login</button></a>
         </div>
     </div>
+</body>
+</html>
