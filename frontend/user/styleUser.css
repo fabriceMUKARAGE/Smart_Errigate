@@ -72,12 +72,12 @@ img{
 .container{
     background: rgba(170, 192, 159, 0.75);
     box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    width: 60%;
-    padding: 30px 40px;
+    width: 40%;
+    padding: 30px 30px 30px 5px;
     border-radius: 62px;  
     position:absolute; left:10%; top:20px; 
-    margin-left: 10%;  
-    margin-top: 1%;
+    margin-left: 20%;  
+    margin-top: 6%;
 }
 
 h1{
@@ -87,7 +87,7 @@ h1{
 }
 
 .form{
-    padding: 30px 40px;
+    padding: 30px 10px;
 }
 
 .form-control{
@@ -100,14 +100,16 @@ h1{
 .form-control label{
     color: black;
     display: block;
-    margin-bottom: 5px;
-    
+    margin-bottom: 5px;   
     
 }
 
 .form-control input{
-    border: 2px solid #f0f0f0;
-    border-radius: 62px;
+    /* border: 2px solid #f0f0f0; */
+    border: none;
+    border-bottom: 2px solid #f0f0f0;
+    border-width: thin;
+    /* border-radius: 62px; */
     display: block;
     width: 75%;
     padding: 10px;
