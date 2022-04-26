@@ -82,7 +82,7 @@ class Database
 }
 $ob = new Database();
 // print_r($ob->insert(6,"Bed1: tomato"));
-// print_r($ob->insert(6,"Bed2: strawberry"));
+// print_r($ob->insert(6,"Bed3: cocoyam"));
 // print_r($ob->read());
 // print_r($ob->getBedBiId(4));
 // print_r($ob->update(3, 6 ,"bed 2: cassava"));

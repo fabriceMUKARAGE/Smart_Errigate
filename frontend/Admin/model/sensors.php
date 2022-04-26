@@ -21,7 +21,7 @@ class Database
 
 
     public function insert($user_id, $sensor_name,$location,$type){
-        $sql = "INSERT INTO sensors (user_id,sensor_name,location,type) VALUES (:user_id,:sensor_name,:location,:type)";
+        $sql = "INSERT INTO sensor (user_id,sensor_name,location,type) VALUES (:user_id,:sensor_name,:location,:type)";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['user_id' => $user_id, 'sensor_name' => $sensor_name, 'location' => $location, 'type' => $type]);
         return true; 
@@ -30,8 +30,8 @@ class Database
     public function read()
     {
         $data = array();
-        $sql = "SELECT sensors.id, sensors.user_id, customers.email, customers.farm, sensors.sensor_name, sensors.location, sensors.type FROM sensors  INNER JOIN customers
-        ON sensors.user_id = customers.id ";
+        $sql = "SELECT sensor.id, sensor.user_id, customers.email, customers.farm, sensor.sensor_name, sensor.location, sensor.type FROM sensor  INNER JOIN customers
+        ON sensor.user_id = customers.id ";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
@@ -45,7 +45,7 @@ class Database
 
     public function getSensorBiId($id)
     { 
-        $sql = "SELECT id, user_id, sensor_name, location, type FROM sensors WHERE id=:id";
+        $sql = "SELECT id, user_id, sensor_name, location, type FROM sensor WHERE id=:id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['id' => $id]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -55,7 +55,7 @@ class Database
 
     public function update($id, $user_id, $sensor_name, $location, $type)
     {
-        $sql = "UPDATE sensors SET user_id= :user_id, sensor_name= :sensor_name, location= :location, type= :type WHERE id= :id";
+        $sql = "UPDATE sensor SET user_id= :user_id, sensor_name= :sensor_name, location= :location, type= :type WHERE id= :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['user_id' => $user_id, 'sensor_name' => $sensor_name,'location' => $location, 'type' => $type, 'id' => $id]);
         return true;
@@ -64,7 +64,7 @@ class Database
 
     public function delete($id)
     {
-        $sql = "DELETE FROM sensors WHERE id=:id";
+        $sql = "DELETE FROM sensor WHERE id=:id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['id' => $id]);
         return true;
@@ -72,7 +72,7 @@ class Database
 
     public function totalRowCount()
     {
-        $sql = "SELECT count(*)  FROM sensors";
+        $sql = "SELECT count(*)  FROM sensor";
         $result = $this->conn->prepare($sql);
         $result->execute();
         $number_of_rows = $result->fetchColumn();
@@ -82,10 +82,10 @@ class Database
 }
 $ob = new Database();
 // print_r($ob->insert(9,"hii"));
-// print_r($ob->insert(6,"temp1","bed1","temperature"));
+// print_r($ob->insert(33,"hum2","bed1","humidity"));
 //  print_r($ob->read());
 // print_r($ob->getSensorBiId(1));
-// print_r($ob->update(1, 6,"temp1","bed 1","temperature"));
+// print_r($ob->update(5, 33,"temp1","bed 1","temperature"));
 // print_r($ob->totalRowCount());
 // print_r($ob->addSensor(5,"temp1","tank1","temperature"));
 // print_r($ob->addtank(5,"tank1"));

@@ -128,10 +128,10 @@
                             <input type="text" name="username" placeholder="Username" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="email" placeholder="Email" class="form-control">
+                            <input type="email" name="email" placeholder="Email" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="email" name="password" placeholder="Password" class="form-control">
+                            <input type="password" name="password" placeholder="Password" class="form-control">
                         </div>
                         <div class="form-group">
                             <input type="text" name="phone_number" placeholder="Phone Number" class="form-control">

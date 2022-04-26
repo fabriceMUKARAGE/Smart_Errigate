@@ -52,7 +52,7 @@ if(isset($_POST['action']) && $_POST['action']== "view"){
         $output .='</tbody></table>';
         echo $output;
     }else{
-        echo '<h3 class="text-center text-secondary mt-5">:( no any sensor present in the database )</h3>';
+        echo '<h3 class="text-center text-secondary mt-5">:( No sensor present in the database )</h3>';
     }
 }
 

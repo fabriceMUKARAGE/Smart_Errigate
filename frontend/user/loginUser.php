@@ -33,7 +33,7 @@
 
             //there will be two options for this coz i have admiin and student interface
             if($result -> fetch_assoc()) {
-                header( 'Location: userHome.php');
+                header( 'Location: ./view/main.php');
 
             }
             else {
@@ -105,7 +105,7 @@
                     </div><br>
 
                     <div class="forgot">
-                        <label for="Forgotpassword"><a href="forgotUser.html"; style="color:#018749; font: 1em sans-serif; text-decoration: none;" >forgotten password?</a></label>
+                        <label for="Forgotpassword"><a href="forgotUser.php"; style="color:#018749; font: 1em sans-serif; text-decoration: none;" >forgotten password?</a></label>
                     </div>
                 </form>
             </div>

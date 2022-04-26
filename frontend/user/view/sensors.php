@@ -26,22 +26,22 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                     <a class="nav-link" href="main.html">All Components</a>
+                     <a class="nav-link" href="main.php">All Components</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="beds.html">Beds</a>
+                     <a class="nav-link" href="beds.php">Beds</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="tanks.html">Tanks</a>
+                     <a class="nav-link" href="tanks.php">Tanks</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link active" href="sensors.html">Sensors</a>
+                     <a class="nav-link active" href="sensors.php">Sensors</a>
                   </li>
 				  <li class="nav-item">
 					<a class="nav-link" href="#">Edit Profile</a>
 				 </li>
 				 <li class="nav-item">
-					<a class="logout-link" href="#">Logout</a>
+					<a class="logout-link" href="../../../index.php">Logout</a>
 				 </li>
                </ul>
             </div>
@@ -62,7 +62,7 @@
 		<div class="breadcrumb-main">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="index.html">Main</a>
+					<a href="main.php">Main</a>
 				</li>
 				<li class="breadcrumb-item active">Sensors</li>
 			</ol>
