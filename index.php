@@ -42,7 +42,7 @@
             <img src="photo.png" alt="background image" width="60%" height="80%">
         </div>
         <div class="txt">
-            <p><span>Automatic Irrigation</span><br>has never been<br>this easy</p>
+            <p><span>Automated Irrigation</span><br>has never been<br>this easy</p>
             <a class="bt"  href="./frontend/Admin/loginAdmin.php"><button style="background-color: #283F18; color:white; border-radius:14px;" type="submit" id='connect'>Admin Login</button></a>
             <a class="bt" href="./frontend/user/loginUser.php"><button style="background-color: #283F18; color:white; border-radius:14px;" type="submit" id='connect'>User Login</button></a>
         </div>
