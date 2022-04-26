@@ -37,7 +37,8 @@
 
             }
             else {
-                $error = " Wrong credentials: User does not exist. Try again";
+                echo '<script>alert("Wrong credentials, Please Try again")</script>';
+                // $error = " Wrong credentials: User does not exist. Try again";
             }
 
 
