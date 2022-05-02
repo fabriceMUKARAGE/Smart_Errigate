@@ -1,3 +1,7 @@
+<?php 
+session_start();
+$email_session = $_SESSION["email"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +42,7 @@
                      <a class="nav-link" href="sensors.php">Sensors</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#">Edit Profile</a>
+                     <a class="nav-link" href="../profile/profile.php">Edit Profile</a>
                   </li>
                   <li class="nav-item">
                      <a class="logout-link" href="../../../index.php">Logout</a>
@@ -59,7 +63,8 @@
                <div class="carousel-item active" style="background-image: url('images/slide-1.png')">
                   <div class="carousel-caption d-none d-md-block">
                      <h3>Welcome to E-rrigate</h3>
-                     <p>Irrigate your farm crops the smart way</p>
+                     <?php echo "<p>" . $email_session . "<p>"; ?>
+                     <!-- <p>Irrigate your farm crops the smart way</p> -->
                   </div>
                </div>
                <!-- Slide Two - Set the background image for this slide in the line below -->

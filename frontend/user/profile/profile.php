@@ -1,29 +1,32 @@
 <?php 
-        require '../../../../Errigate/connection.php';
-        $id=$_GET['updateid'];
-        $sql="Select * from `customers` where id=$id";
-        $result=mysqli_query($con,$sql);
-        $row=mysqli_fetch_assoc($result);
-        $email=$row['email'];
-        $password=$row['password'];
-        $phone_number=$row['phone_number'];
+        require './config.php';
+        session_start();
+        $email_session = $_SESSION["email"];
+
+        $sql = "SELECT email, phone_number FROM customers WHERE email=?";
+        $stmt = $con->prepare($sql); 
+        $stmt->bind_param("s", $email_session);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        while ($row = $result->fetch_assoc()) {
+            $email=$row['email'];
+            $phone_number=$row['phone_number'];
+        }
        
     
         if(isset($_POST['submit'])){
             $email=$_POST['email'];
             $password=$_POST['password'];
+            $password=md5($password);
             $phone_number=$_POST['phone_number'];
-    
-            $sql="update `customers` set id=$id,email='$email',password='$password',phone_number='$phone_number' where id=$id";
-            echo "Updated successfully";
-            $result=mysqli_query($con,$sql);
-            if($result){
-                echo "<script>alert('Profile updated successfully');</script>";
-                header('location: ../../../customerIndex.php');
-            }
-            else{
-                die(mysqli_error($con));
-            }
+            $sql = "UPDATE customers SET email = '".$email."', password = '".$password."', 
+            phone_number = '".$phone_number."' WHERE email = '".$email_session."'";
+            if ($con->query($sql) == TRUE) {
+                echo '<script>alert("Record updated successfully")</script>';
+                header("Location: ../view/main.php");
+              } else {
+                echo "Error updating record: " . $con->error;
+              }
         }
     ?>
 
@@ -39,24 +42,24 @@
 <body>
     <!--Loading the page-->
     <body onload="myFunction()" style="margin:0;">
-        <img class="imagelogo" src="../../assets/Elogo.png" alt="Logo image" width="150" height="150">
+        <!-- <img class="imagelogo" src="../../assets/Elogo.png" alt="Logo image" width="150" height="150"> -->
         
         <!--profile picture-->
-        <div class="profile-pic">
+        <!-- <div class="profile-pic">
             <label class="-label" for="file">
               <span class="glyphicon glyphicon-camera"></span>
               <span>Change Image</span>
             </label>
             <input id="file" type="file" onchange="loadFile(event)" />
             <img src="noprofil.jpg" id="output" width="200" />
-          </div>
+          </div> -->
         <!--JavaScript for editing a picture -->
-        <script>
+        <!-- <script>
         var loadFile = function (event) {
             var image = document.getElementById("output");
             image.src = URL.createObjectURL(event.target.files[0]);
           };
-          </script>        
+          </script>         -->
 
         <!--Updating customer information -->
 
@@ -74,12 +77,12 @@
                                 </div>
                                 <div class="form-control">
                                     <label for="phone">Phone Number</label>
-                                    <input type="text" name="phone_number" value=<?php echo $phone_number; ?> placeholder="+233 24 412 3456" id="phone" required>
+                                    <input type="text" name="phone_number" value=<?php print_r($phone_number); ?> placeholder="+233244123456" id="phone" required>
                                     <small id='phoneError'></small>
                                 </div>
                                 <div class="form-control">
                                     <label for="password">Password</label>
-                                    <input type="password" name="password" value=<?php echo $password; ?> placeholder="*******************" id="password" required>
+                                    <input type="text" name="password"  placeholder="**********" id="password" required>
                                     <small id='passwordError'></small>
                                 </div>
                                 <small id='success'></small>

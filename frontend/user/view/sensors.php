@@ -1,3 +1,8 @@
+<?php 
+session_start();
+$email_session = $_SESSION["email"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,9 +42,9 @@
                   <li class="nav-item">
                      <a class="nav-link active" href="sensors.php">Sensors</a>
                   </li>
-				  <li class="nav-item">
-					<a class="nav-link" href="#">Edit Profile</a>
-				 </li>
+				  <!-- <li class="nav-item">
+					<a class="nav-link" href="../profile/profile.php">Edit Profile</a>
+				 </li> -->
 				 <li class="nav-item">
 					<a class="logout-link" href="../../../index.php">Logout</a>
 				 </li>
