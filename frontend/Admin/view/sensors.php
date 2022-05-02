@@ -389,15 +389,6 @@ $("body").on("click",".infoBtn",function(event){
           });
       });
     })
-
-
-
-
- 
-
-
-
-
 </script>
 </body>
 </html>

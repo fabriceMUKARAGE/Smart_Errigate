@@ -23,6 +23,16 @@
             $_SESSION["email"] = $Email;
             // $_SESSION["email"] = $Email;
 
+        
+    
+            $sql = "SELECT id FROM customers WHERE email=?";
+            $stmt = $conn->prepare($sql); 
+            $stmt->bind_param("s", $Email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            while ($row = $result->fetch_assoc()) {
+                $id=$row['id'];
+            }
             
 
             // need a table for this in data base 
@@ -36,7 +46,7 @@
 
             //there will be two options for this coz i have admiin and student interface
             if($result -> fetch_assoc()) {
-                header( 'Location: ./view/main.php');
+                header( "Location: ./view/main.php?id=$id");
 
             }
             else {

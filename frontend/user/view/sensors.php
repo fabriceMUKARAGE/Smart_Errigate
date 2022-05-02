@@ -1,6 +1,7 @@
 <?php 
 session_start();
 $email_session = $_SESSION["email"];
+$id = $_GET['id'];
 ?>
 
 <!DOCTYPE html>
@@ -31,16 +32,16 @@ $email_session = $_SESSION["email"];
             <div class="collapse navbar-collapse" id="navbarResponsive">
                <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                     <a class="nav-link" href="main.php">All Components</a>
+                     <a class="nav-link" href="main.php?id=<?php echo "".$id?>">All Components</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="beds.php">Beds</a>
+                     <a class="nav-link" href="beds.php?id=<?php echo "".$id?>">Beds</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="tanks.php">Tanks</a>
+                     <a class="nav-link" href="tanks.php?id=<?php echo "".$id?>">Tanks</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link active" href="sensors.php">Sensors</a>
+                     <a class="nav-link active" href="sensors.php?id=<?php echo "".$id?>">Sensors</a>
                   </li>
 				  <!-- <li class="nav-item">
 					<a class="nav-link" href="../profile/profile.php">Edit Profile</a>
@@ -72,69 +73,8 @@ $email_session = $_SESSION["email"];
 				<li class="breadcrumb-item active">Sensors</li>
 			</ol>
 		</div>
-		<div class="table-responsive">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-					  <th scope="col">#</th>
-					  <th scope="col">Name of Sensor</th>
-					  <th scope="col">Location</th>
-					  <th scope="col">Type</th>
-					  <th scope="col">Value Recorded</th>
-					</tr>
-				  </thead>
-				  <tbody>
-					<tr>
-					  <th scope="row">1</th>
-					  <td>Temp 101</td>
-					  <td>Bed 1</td>
-					  <td>Temperature sensor</td>
-					  <td>35°C</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Temp 101</td>
-						<td>Bed 1</td>
-						<td>Temperature sensor</td>
-						<td>35°C</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>Temp 101</td>
-						<td>Bed 1</td>
-						<td>Temperature sensor</td>
-						<td>35°C</td>
-					</tr>
-					<tr>
-						<th scope="row">4</th>
-						<td>Temp 101</td>
-						<td>Bed 1</td>
-						<td>Temperature sensor</td>
-						<td>35°C</td>
-					</tr>
-					<tr>
-						<th scope="row">5</th>
-						<td>Temp 101</td>
-						<td>Bed 1</td>
-						<td>Temperature sensor</td>
-						<td>35°C</td>
-					</tr>
-					<tr>
-						<th scope="row">6</th>
-						<td>Temp 101</td>
-						<td>Bed 1</td>
-						<td>Temperature sensor</td>
-						<td>35°C</td>
-					</tr>
-					<tr>
-						<th scope="row">7</th>
-						<td>Temp 101</td>
-						<td>Bed 1</td>
-						<td>Temperature sensor</td>
-						<td>35°C</td>
-					</tr>
-				  </tbody>
-			</table>
+		<div class="table-responsive" id="showUser">
+			
 		  </div>
     </div>
     <!-- /.container -->
@@ -167,5 +107,27 @@ $email_session = $_SESSION["email"];
 <!-- Contact form JavaScript -->
 <script src="js/jqBootstrapValidation.js"></script>
 <script src="js/contact_me.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+    
+    ShowAllUsers();
+
+    function ShowAllUsers() {
+          $.ajax({
+              url: ["../controller/sensors.php?id=<?php echo "".$id?>"],
+              type: "POST",
+              data: {
+                  action: "view"
+              },
+              success:function(response) {
+                  // console.log(response);
+                  $("#showUser").html(response);
+                  $("table").DataTable();
+              }
+          });
+      }
+	})
+</script>
 </body>
 </html>

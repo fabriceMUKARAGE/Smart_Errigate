@@ -1,6 +1,7 @@
 <?php 
 session_start();
 $email_session = $_SESSION["email"];
+$id = $_GET['id'];
 ?>
 
 <!DOCTYPE html>
@@ -31,16 +32,16 @@ $email_session = $_SESSION["email"];
             <div class="collapse navbar-collapse" id="navbarResponsive">
                <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                     <a class="nav-link" href="main.php">All Components</a>
+                     <a class="nav-link" href="main.php?id=<?php echo "".$id?>">All Components</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="beds.php">Beds</a>
+                     <a class="nav-link" href="beds.php?id=<?php echo "".$id?>">Beds</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link active" href="tanks.php">Tanks</a>
+                     <a class="nav-link active" href="tanks.php?id=<?php echo "".$id?>">Tanks</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="sensors.php">Sensors</a>
+                     <a class="nav-link" href="sensors.php?id=<?php echo "".$id?>">Sensors</a>
                   </li>
                   <!-- <li class="nav-item">
                      <a class="nav-link" href="../profile/profile.php">Edit Profile</a>

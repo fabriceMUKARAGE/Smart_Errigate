@@ -13,7 +13,7 @@ class Database
     {
         try {
             $this->conn = new PDO($this->dsn, $this->username, $this->pass);
-            echo "Succesfully Conected!";
+            // echo "Succesfully Conected!";
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -74,7 +74,7 @@ class Database
     public function readSensors($user_id)
     {
         $data = array();
-        $sql = "SELECT id, user_id, sensor_name, location, type, value_recorded FROM sensor WHERE user_id=:user_id";
+        $sql = "SELECT id, sensor_name, location, type, value_recorded FROM sensor WHERE user_id=:user_id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['user_id' => $user_id]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -121,14 +121,14 @@ class Database
     }
 
 
-    // public function totalRowCount()
-    // {
-    //     $sql = "SELECT count(*)  FROM customers";
-    //     $result = $this->conn->prepare($sql);
-    //     $result->execute();
-    //     $number_of_rows = $result->fetchColumn();
-    //     return $number_of_rows;
-    // }
+    public function totalRowCount($user_id)
+    {
+        $sql = "SELECT count(*)  FROM sensor WHERE user_id=:user_id";
+        $result = $this->conn->prepare($sql);
+        $result->execute(['user_id' => $user_id]);
+        $number_of_rows = $result->fetchColumn();
+        return $number_of_rows;
+    }
 
 }
 $ob = new Database();
@@ -136,9 +136,9 @@ $ob = new Database();
 // print_r($ob->readFeaturedBeds(6));
 // print_r($ob->readTanks(6));
 // print_r($ob->readFeaturedTanks(6));
-// print_r($ob->readSensors(6));
+// print_r($ob->readSensors(33));
 // print_r($ob->readFarmWeather(6));
 // print_r($ob->getUserBiId(6));
 // print_r($ob->bedValve(4, "Close"));
 // print_r($ob->tankValve(2, "Close"));
-// print_r($ob->totalRowCount());
+// print_r($ob->totalRowCount(33));
