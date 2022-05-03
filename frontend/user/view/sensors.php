@@ -110,7 +110,7 @@ $id = $_GET['id'];
 
 <script type="text/javascript"> 
 $(document).ready(function() {
-    
+
     ShowAllUsers();
 
     function ShowAllUsers() {
@@ -123,7 +123,7 @@ $(document).ready(function() {
               success:function(response) {
                   // console.log(response);
                   $("#showUser").html(response);
-                  $("table").DataTable();
+
               }
           });
       }

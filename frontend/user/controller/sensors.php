@@ -10,7 +10,7 @@ if(isset($_POST['action']) && $_POST['action']== "view"){
     $data = $db->readSensors($id);
    //  print_r($data);
     if($db->totalRowCount($id)>0){ 
-        $output .= '<table class="table table-striped">
+        $output .= '<table class="table table-striped  table-bordered">
         <thead>
             <tr class="text-center">            
                 <th scope="col">#</th>
