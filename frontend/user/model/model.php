@@ -35,7 +35,7 @@ class Database
     public function readFeaturedBeds($user_id)
     {
         $data = array();
-        $sql = "SELECT id, user_id, bed_name, humidity, temperature, pH, nitrogen, phosphorous, potassium, water_used  FROM beds WHERE user_id=:user_id LIMIT 3";
+        $sql = "SELECT id, bed_name, humidity, temperature, pH, nitrogen, phosphorous, potassium, water_used  FROM beds WHERE user_id=:user_id LIMIT 3";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['user_id' => $user_id]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -61,7 +61,7 @@ class Database
     public function readFeaturedTanks($user_id)
     {
         $data = array();
-        $sql = "SELECT id, user_id, tank_name, level, refill, rate FROM tanks WHERE user_id=:user_id LIMIT 3";
+        $sql = "SELECT id, tank_name, level, refill, rate FROM tanks WHERE user_id=:user_id LIMIT 3";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['user_id' => $user_id]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -86,7 +86,7 @@ class Database
 
     public function readFarmWeather($user_id)
     {
-        $sql = "SELECT id, user_id, temperature, humidity, wind_speed, wind_direction, rainfall, solar_radiation FROM farm_weather WHERE user_id=:user_id";
+        $sql = "SELECT id, temperature, humidity, wind_speed, wind_direction, rainfall, solar_radiation FROM farm_weather WHERE user_id=:user_id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['user_id' => $user_id]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -130,15 +130,24 @@ class Database
         return $number_of_rows;
     }
 
+    public function totalWeatherRowCount($user_id)
+    {
+        $sql = "SELECT count(*)  FROM farm_weather WHERE user_id=:user_id";
+        $result = $this->conn->prepare($sql);
+        $result->execute(['user_id' => $user_id]);
+        $number_of_rows = $result->fetchColumn();
+        return $number_of_rows;
+    }
+
 }
 $ob = new Database();
 // print_r($ob->readBeds(6));
-// print_r($ob->readFeaturedBeds(6));
+// print_r($ob->readFeaturedBeds(33));
 // print_r($ob->readTanks(6));
-// print_r($ob->readFeaturedTanks(6));
+// print_r($ob->readFeaturedTanks(33));
 // print_r($ob->readSensors(33));
-// print_r($ob->readFarmWeather(6));
+// print_r($ob->readFarmWeather(33));
 // print_r($ob->getUserBiId(6));
 // print_r($ob->bedValve(4, "Close"));
 // print_r($ob->tankValve(2, "Close"));
-// print_r($ob->totalRowCount(33));
+// print_r($ob->totalWeatherRowCount(33));

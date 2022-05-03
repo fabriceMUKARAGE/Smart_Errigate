@@ -98,80 +98,15 @@ $id = $_GET['id'];
         <div class="services-bar" id="beds">
             <h1 class="my-4"> Beds </h1>
             <!-- Beds Section -->
-            <div class="row">
-               <div class="col-lg-4 mb-4">
-                  <div class="card h-100">
-                     <h4 class="card-header">Bed 1: Pepper</h4>
-                     <div class="card-img">
-                        <img class="img-fluid" src="images/beds.png" alt="" />
-                     </div>
-                     <div class="card-body">
-                        <div class="card-text">Soil humidity: 60% <br> Soil temperature: 35°C <br> PH: 7.33 <br> Nitrogen: 122mg/kg <br> Phosphorus: 99mg/kg
-                           <br> Potassium: 107mg/kg <br> Water used(24h): 5L
-                        </div>
-                     </div>
-                     <div class="card-footer">
-                        <a href="#beds" class="btn btn-primary" id="valve" onclick="myFunction()">Open Valve</a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-4 mb-4">
-                  <div class="card h-100">
-                     <h4 class="card-header">Bed 2: Tomatoes</h4>
-                     <div class="card-img">
-                        <img class="img-fluid" src="images/beds.png" alt="" />
-                     </div>
-                     <div class="card-body">
-                        <div class="card-text">Soil humidity: 60% <br> Soil temperature: 35°C <br> PH: 7.33 <br> Nitrogen: 122mg/kg <br> Phosphorus: 99mg/kg
-                           <br> Potassium: 107mg/kg <br> Water used(24h): 5L
-                        </div>
-                     </div>
-                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Open valve</a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-lg-4 mb-4">
-                  <div class="card h-100">
-                     <h4 class="card-header">Bed 3: Strawberry</h4>
-                     <div class="card-img">
-                        <img class="img-fluid" src="images/beds.png" alt="" />
-                     </div>
-                     <div class="card-body">
-                        <div class="card-text">Soil humidity: 60% <br> Soil temperature: 35°C <br> PH: 7.33 <br> Nitrogen: 122mg/kg <br> Phosphorus: 99mg/kg
-                           <br> Potassium: 107mg/kg <br> Water used(24h): 5L
-                        </div>
-                     </div>
-                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Open Valve</a>
-                     </div>
-                  </div>
-               </div>
+            <div class="row" id="showBeds">
+              
             </div>
             <!-- /.row -->
         </div>
         <!-- About Section -->
         <div class="about-main">
-            <div class="row">
-               <div class="col-lg-6">
-                  <h2>Farm Weather</h2>
-                  <p>Read the farm weather and choose the best settings for automated irrigation</p>
-                  <h5>Our smart approach</h5>
-                  <ul>
-                     <li>Temperature: 25°C</li>
-                     <li>Relative Humidity: 65%</li>
-                     <li>Wind Speed: 33Km/h</li>
-                     <li>Wind Direction: 022° NE</li>
-                     <li>Rainfall: 5mm</li>
-                     <li>Solar Radiation: 0.22 W/m^3</li>
-                  </ul>
-                  <p>Read the farm weather data recorded over a period of time and make the right irrigation decisions for your crops. Open valves to water farm crops on a sunny day and
-                     close valves on a rainy day to prevent leaching. 
-                  </p>
-               </div>
-               <div class="col-lg-6">
-                  <img class="img-fluid rounded" src="images/farm-weather.png" alt="" />
-               </div>
+            <div class="row" id="showFarmWeather">
+              
             </div>
             <!-- /.row -->
         </div>
@@ -179,52 +114,8 @@ $id = $_GET['id'];
         <div class="services-bar">
          <h1 class="my-4">Water Tanks </h1>
          <!-- Beds Section -->
-         <div class="row">
-            <div class="col-lg-4 mb-4">
-               <div class="card h-100">
-                  <h4 class="card-header">Tank 1</h4>
-                  <div class="card-img">
-                     <img class="img-fluid" src="images/water-tanks.jpg" alt="" />
-                  </div>
-                  <div class="card-body">
-                     <div class="card-text">LEVEL: 60% <br> Refill: Ongoing <br> Rate: 100L/min
-                     </div>
-                  </div>
-                  <div class="card-footer">
-                     <a href="#" class="btn btn-primary">Open Valve</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-               <div class="card h-100">
-                  <h4 class="card-header">Tank 2</h4>
-                  <div class="card-img">
-                     <img class="img-fluid" src="images/water-tanks.jpg" alt="" />
-                  </div>
-                  <div class="card-body">
-                     <div class="card-text">LEVEL: 60% <br> Refill: Ongoing <br> Rate: 100L/min
-                     </div>
-                  </div>
-                  <div class="card-footer">
-                     <a href="#" class="btn btn-primary">Open valve</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-4 mb-4">
-               <div class="card h-100">
-                  <h4 class="card-header">Tank 3</h4>
-                  <div class="card-img">
-                     <img class="img-fluid" src="images/water-tanks.jpg" alt="" />
-                  </div>
-                  <div class="card-body">
-                     <div class="card-text">LEVEL: 60% <br> Refill: Ongoing <br> Rate: 100L/min
-                     </div>
-                  </div>
-                  <div class="card-footer">
-                     <a href="#" class="btn btn-primary">Open Valve</a>
-                  </div>
-               </div>
-            </div>
+         <div class="row" id="showTanks">
+           
          </div>
          <!-- /.row -->
      </div>
@@ -265,19 +156,75 @@ $id = $_GET['id'];
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script>
-   function myFunction() {
-      if (document.getElementById("valve").innerHTML == "Close Valve"){
-         document.getElementById("valve").style.color = "white";
-         document.getElementById("valve").style.backgroundColor = "#5ec549";
-         document.getElementById("valve").innerHTML = "Open Valve";
+   function myFunction($val) {
+      if (document.getElementById($val).innerHTML == "Close Valve"){
+         document.getElementById($val).style.color = "white";
+         document.getElementById($val).style.backgroundColor = "#5ec549";
+         document.getElementById($val).innerHTML = "Open Valve";
       }
       else{
-         document.getElementById("valve").style.color = "#4e3914";
-         document.getElementById("valve").style.fontWeight = "700";
-         document.getElementById("valve").style.backgroundColor = "white";
-         document.getElementById("valve").innerHTML = "Close Valve";
+         document.getElementById($val).style.color = "#4e3914";
+         document.getElementById($val).style.fontWeight = "700";
+         document.getElementById($val).style.backgroundColor = "white";
+         document.getElementById($val).innerHTML = "Close Valve";
       }
    }
-   </script>
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+
+    ShowFeaturedBeds();
+    ShowFarmWeather();
+    ShowFeaturedTanks();
+
+    function ShowFeaturedBeds() {
+          $.ajax({
+              url: ["../controller/main.php?id=<?php echo "".$id?>"],
+              type: "POST",
+              data: {
+                  action: "bed"
+              },
+              success:function(response) {
+                  // console.log(response);
+                  $("#showBeds").html(response);
+
+              }
+          });
+      }
+
+
+      function ShowFarmWeather() {
+          $.ajax({
+              url: ["../controller/main.php?id=<?php echo "".$id?>"],
+              type: "POST",
+              data: {
+                  action: "weather"
+              },
+              success:function(response) {
+                  // console.log(response);
+                  $("#showFarmWeather").html(response);
+
+              }
+          });
+      }
+
+      function ShowFeaturedTanks() {
+          $.ajax({
+              url: ["../controller/main.php?id=<?php echo "".$id?>"],
+              type: "POST",
+              data: {
+                  action: "tank"
+              },
+              success:function(response) {
+                  // console.log(response);
+                  $("#showTanks").html(response);
+
+              }
+          });
+      }
+
+	})
+</script>
 </body>
 </html>
