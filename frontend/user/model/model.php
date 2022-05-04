@@ -130,6 +130,24 @@ class Database
         return $number_of_rows;
     }
 
+    public function totalBedsRowCount($user_id)
+    {
+        $sql = "SELECT count(*)  FROM beds WHERE user_id=:user_id";
+        $result = $this->conn->prepare($sql);
+        $result->execute(['user_id' => $user_id]);
+        $number_of_rows = $result->fetchColumn();
+        return $number_of_rows;
+    }
+
+    public function totalTanksRowCount($user_id)
+    {
+        $sql = "SELECT count(*)  FROM tanks WHERE user_id=:user_id";
+        $result = $this->conn->prepare($sql);
+        $result->execute(['user_id' => $user_id]);
+        $number_of_rows = $result->fetchColumn();
+        return $number_of_rows;
+    }
+
     public function totalWeatherRowCount($user_id)
     {
         $sql = "SELECT count(*)  FROM farm_weather WHERE user_id=:user_id";
@@ -141,7 +159,7 @@ class Database
 
 }
 $ob = new Database();
-// print_r($ob->readBeds(6));
+// print_r($ob->readBeds(33));
 // print_r($ob->readFeaturedBeds(33));
 // print_r($ob->readTanks(6));
 // print_r($ob->readFeaturedTanks(33));
@@ -151,3 +169,5 @@ $ob = new Database();
 // print_r($ob->bedValve(4, "Close"));
 // print_r($ob->tankValve(2, "Close"));
 // print_r($ob->totalWeatherRowCount(33));
+// print_r($ob->totalBedsRowCount(33));
+// print_r($ob->totalTanksRowCount(33));
