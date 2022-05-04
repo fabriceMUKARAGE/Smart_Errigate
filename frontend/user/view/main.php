@@ -155,35 +155,6 @@ $id = $_GET['id'];
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script>
-   function myFunction($val) {
-      if (document.getElementById($val).innerHTML == "Close Valve"){
-         document.getElementById($val).style.color = "white";
-         document.getElementById($val).style.backgroundColor = "#5ec549";
-         document.getElementById($val).innerHTML = "Open Valve";
-      }
-      else{
-         document.getElementById($val).style.color = "#4e3914";
-         document.getElementById($val).style.fontWeight = "700";
-         document.getElementById($val).style.backgroundColor = "white";
-         document.getElementById($val).innerHTML = "Close Valve";
-      }
-   }
-
-   function myTankFunction($val) {
-      if (document.getElementById($val).innerHTML == "Close Valve"){
-         document.getElementById($val).style.color = "white";
-         document.getElementById($val).style.backgroundColor = "#5ec549";
-         document.getElementById($val).innerHTML = "Open Valve";
-      }
-      else{
-         document.getElementById($val).style.color = "#4e3914";
-         document.getElementById($val).style.fontWeight = "700";
-         document.getElementById($val).style.backgroundColor = "white";
-         document.getElementById($val).innerHTML = "Close Valve";
-      }
-   }
-</script>
 
 <script type="text/javascript"> 
 $(document).ready(function() {

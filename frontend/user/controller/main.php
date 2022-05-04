@@ -24,7 +24,7 @@ if(isset($_POST['action']) && $_POST['action']== "bed"){
               </div>
            </div>
            <div class="card-footer">
-              <a href="#beds" class="btn btn-primary" id="'.$data_id.'" onclick="myFunction('.$data_id.')">Open Valve</a>
+              <a href="../view/beds.php?id='.$id.'" class="btn btn-primary">Open Valve</a>
            </div>
         </div>
      </div>';
@@ -86,7 +86,7 @@ if(isset($_POST['action']) && $_POST['action']== "tank"){
               </div>
            </div>
            <div class="card-footer">
-           <a href="#tanks" class="btn btn-primary" id="'.$tank_data_id.'" onclick="myTankFunction('.$tank_data_id.')">Open Valve</a>
+           <a href="../view/tanks.php?id='.$id.'" class="btn btn-primary">Open Valve</a>
            </div>
         </div>
      </div>';
