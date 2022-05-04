@@ -111,7 +111,7 @@ $id = $_GET['id'];
             <!-- /.row -->
         </div>
         <!-- Tanks Section -->
-        <div class="services-bar">
+        <div class="services-bar" id="tanks">
          <h1 class="my-4">Water Tanks </h1>
          <!-- Beds Section -->
          <div class="row" id="showTanks">
@@ -157,6 +157,20 @@ $id = $_GET['id'];
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script>
    function myFunction($val) {
+      if (document.getElementById($val).innerHTML == "Close Valve"){
+         document.getElementById($val).style.color = "white";
+         document.getElementById($val).style.backgroundColor = "#5ec549";
+         document.getElementById($val).innerHTML = "Open Valve";
+      }
+      else{
+         document.getElementById($val).style.color = "#4e3914";
+         document.getElementById($val).style.fontWeight = "700";
+         document.getElementById($val).style.backgroundColor = "white";
+         document.getElementById($val).innerHTML = "Close Valve";
+      }
+   }
+
+   function myTankFunction($val) {
       if (document.getElementById($val).innerHTML == "Close Valve"){
          document.getElementById($val).style.color = "white";
          document.getElementById($val).style.backgroundColor = "#5ec549";

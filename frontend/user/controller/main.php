@@ -73,19 +73,20 @@ if(isset($_POST['action']) && $_POST['action']== "tank"){
     $tank_data = $db->readFeaturedTanks($id);
    //  print_r($data);
     if($db->totalRowCount($id)>0){ 
-        foreach($tank_data as $row){
+        foreach($tank_data as $tank_row){
+        $tank_data_id = $tank_row['id'];
         $tank_output .=  '<div class="col-lg-4 mb-4">
         <div class="card h-100">
-           <h4 class="card-header">'.$row['tank_name'].'</h4>
+           <h4 class="card-header">'.$tank_row['tank_name'].'</h4>
            <div class="card-img">
               <img class="img-fluid" src="images/water-tanks.jpg" alt="" />
            </div>
            <div class="card-body">
-              <div class="card-text">LEVEL: '.$row['level'].' <br> Refill: '.$row['refill'].' <br> Rate: '.$row['rate'].'
+              <div class="card-text">LEVEL: '.$tank_row['level'].' <br> Refill: '.$tank_row['refill'].' <br> Rate: '.$tank_row['rate'].'
               </div>
            </div>
            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Open Valve</a>
+           <a href="#tanks" class="btn btn-primary" id="'.$tank_data_id.'" onclick="myTankFunction('.$tank_data_id.')">Open Valve</a>
            </div>
         </div>
      </div>';
