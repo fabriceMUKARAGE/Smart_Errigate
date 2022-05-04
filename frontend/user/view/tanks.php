@@ -72,154 +72,13 @@ $id = $_GET['id'];
 			</ol>
 		</div>
 
-		<!-- All Beds -->
+		<!-- All Tanks -->
 		<div class="services-bar">
             <h1 class="my-4">All Tanks </h1>
-            <!-- Beds Section -->
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                   <div class="card h-100">
-                      <h4 class="card-header">Tank 1</h4>
-                      <div class="card-img">
-                         <img class="img-fluid" src="images/water-tanks.jpg" alt="" />
-                      </div>
-                      <div class="card-body">
-                         <div class="card-text">LEVEL: 60% <br> Refill: Ongoing <br> Rate: 100L/min
-                         </div>
-                      </div>
-                      <div class="card-footer">
-                         <a href="#" class="btn btn-primary">Open Valve</a>
-                      </div>
-                   </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                   <div class="card h-100">
-                      <h4 class="card-header">Tank 2</h4>
-                      <div class="card-img">
-                         <img class="img-fluid" src="images/water-tanks.jpg" alt="" />
-                      </div>
-                      <div class="card-body">
-                         <div class="card-text">LEVEL: 60% <br> Refill: Ongoing <br> Rate: 100L/min
-                         </div>
-                      </div>
-                      <div class="card-footer">
-                         <a href="#" class="btn btn-primary">Open valve</a>
-                      </div>
-                   </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                   <div class="card h-100">
-                      <h4 class="card-header">Tank 3</h4>
-                      <div class="card-img">
-                         <img class="img-fluid" src="images/water-tanks.jpg" alt="" />
-                      </div>
-                      <div class="card-body">
-                         <div class="card-text">LEVEL: 60% <br> Refill: Ongoing <br> Rate: 100L/min
-                         </div>
-                      </div>
-                      <div class="card-footer">
-                         <a href="#" class="btn btn-primary">Open Valve</a>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <!-- /.row -->
-             <div class="row">
-                <div class="col-lg-4 mb-4">
-                   <div class="card h-100">
-                      <h4 class="card-header">Tank 1</h4>
-                      <div class="card-img">
-                         <img class="img-fluid" src="images/water-tanks.jpg" alt="" />
-                      </div>
-                      <div class="card-body">
-                         <div class="card-text">LEVEL: 60% <br> Refill: Ongoing <br> Rate: 100L/min
-                         </div>
-                      </div>
-                      <div class="card-footer">
-                         <a href="#" class="btn btn-primary">Open Valve</a>
-                      </div>
-                   </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                   <div class="card h-100">
-                      <h4 class="card-header">Tank 2</h4>
-                      <div class="card-img">
-                         <img class="img-fluid" src="images/water-tanks.jpg" alt="" />
-                      </div>
-                      <div class="card-body">
-                         <div class="card-text">LEVEL: 60% <br> Refill: Ongoing <br> Rate: 100L/min
-                         </div>
-                      </div>
-                      <div class="card-footer">
-                         <a href="#" class="btn btn-primary">Open valve</a>
-                      </div>
-                   </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                   <div class="card h-100">
-                      <h4 class="card-header">Tank 3</h4>
-                      <div class="card-img">
-                         <img class="img-fluid" src="images/water-tanks.jpg" alt="" />
-                      </div>
-                      <div class="card-body">
-                         <div class="card-text">LEVEL: 60% <br> Refill: Ongoing <br> Rate: 100L/min
-                         </div>
-                      </div>
-                      <div class="card-footer">
-                         <a href="#" class="btn btn-primary">Open Valve</a>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <!-- /.row -->
-             <div class="row">
-                <div class="col-lg-4 mb-4">
-                   <div class="card h-100">
-                      <h4 class="card-header">Tank 1</h4>
-                      <div class="card-img">
-                         <img class="img-fluid" src="images/water-tanks.jpg" alt="" />
-                      </div>
-                      <div class="card-body">
-                         <div class="card-text">LEVEL: 60% <br> Refill: Ongoing <br> Rate: 100L/min
-                         </div>
-                      </div>
-                      <div class="card-footer">
-                         <a href="#" class="btn btn-primary">Open Valve</a>
-                      </div>
-                   </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                   <div class="card h-100">
-                      <h4 class="card-header">Tank 2</h4>
-                      <div class="card-img">
-                         <img class="img-fluid" src="images/water-tanks.jpg" alt="" />
-                      </div>
-                      <div class="card-body">
-                         <div class="card-text">LEVEL: 60% <br> Refill: Ongoing <br> Rate: 100L/min
-                         </div>
-                      </div>
-                      <div class="card-footer">
-                         <a href="#" class="btn btn-primary">Open valve</a>
-                      </div>
-                   </div>
-                </div>
-                <div class="col-lg-4 mb-4">
-                   <div class="card h-100">
-                      <h4 class="card-header">Tank 3</h4>
-                      <div class="card-img">
-                         <img class="img-fluid" src="images/water-tanks.jpg" alt="" />
-                      </div>
-                      <div class="card-body">
-                         <div class="card-text">LEVEL: 60% <br> Refill: Ongoing <br> Rate: 100L/min
-                         </div>
-                      </div>
-                      <div class="card-footer">
-                         <a href="#" class="btn btn-primary">Open Valve</a>
-                      </div>
-                   </div>
-                </div>
-             </div>
-             <!-- /.row -->
+            <!-- Tanks Section -->
+            <div id="showTanks">
+
+			   </div>
         </div>
 	</div>
 
@@ -247,5 +106,43 @@ $id = $_GET['id'];
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script>
+   function myFunction($val) {
+      if (document.getElementById($val).innerHTML == "Close Valve"){
+         document.getElementById($val).style.color = "white";
+         document.getElementById($val).style.backgroundColor = "#5ec549";
+         document.getElementById($val).innerHTML = "Open Valve";
+      }
+      else{
+         document.getElementById($val).style.color = "#4e3914";
+         document.getElementById($val).style.fontWeight = "700";
+         document.getElementById($val).style.backgroundColor = "white";
+         document.getElementById($val).innerHTML = "Close Valve";
+      }
+   }
+</script>
+
+<script type="text/javascript"> 
+$(document).ready(function() {
+
+    ShowTanks();
+
+    function ShowTanks() {
+          $.ajax({
+              url: ["../controller/tanks.php?id=<?php echo "".$id?>"],
+              type: "POST",
+              data: {
+                  action: "tank"
+              },
+              success:function(response) {
+                  // console.log(response);
+                  $("#showTanks").html(response);
+
+              }
+          });
+      }
+
+	})
+</script>
 </body>
 </html>

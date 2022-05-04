@@ -161,7 +161,7 @@ class Database
 $ob = new Database();
 // print_r($ob->readBeds(33));
 // print_r($ob->readFeaturedBeds(33));
-// print_r($ob->readTanks(6));
+// print_r($ob->readTanks(33));
 // print_r($ob->readFeaturedTanks(33));
 // print_r($ob->readSensors(33));
 // print_r($ob->readFarmWeather(33));
