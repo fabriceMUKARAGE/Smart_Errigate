@@ -104,12 +104,33 @@ class Database
     // }
 
 
-    public function bedValve($id, $is_valve_open)
-    {
-        $sql = "UPDATE beds SET is_valve_open= :is_valve_open WHERE id= :id";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(['is_valve_open' => $is_valve_open, 'id' => $id]);
-        return true;
+    public function bedValve($id)
+    {    
+
+        $sql1 = "SELECT is_valve_open FROM beds WHERE id=:id";
+        $stmt1 = $this->conn->prepare($sql1);
+        $stmt1->execute(['id' => $id]);
+        $result = $stmt1->fetch(PDO::FETCH_ASSOC);
+        // return $result;
+
+
+        if ($result['is_valve_open']  == "open"){
+            $sql = "UPDATE beds SET is_valve_open='close' WHERE id = $id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+    
+        }
+        elseif($result['is_valve_open'] == "close") {
+            $sql = "UPDATE beds SET is_valve_open='open' WHERE id = $id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();    
+        }
+
+        else{
+            echo "Unsuccessful";
+        }
+        // $sql = "UPDATE beds SET is_valve_open= :is_valve_open WHERE id= :id";
+        return $result;
     }
 
     public function tankValve($id, $is_pump_open)
@@ -166,7 +187,7 @@ $ob = new Database();
 // print_r($ob->readSensors(33));
 // print_r($ob->readFarmWeather(33));
 // print_r($ob->getUserBiId(6));
-// print_r($ob->bedValve(4, "Close"));
+// print_r($ob->bedValve(11));
 // print_r($ob->tankValve(2, "Close"));
 // print_r($ob->totalWeatherRowCount(33));
 // print_r($ob->totalBedsRowCount(33));

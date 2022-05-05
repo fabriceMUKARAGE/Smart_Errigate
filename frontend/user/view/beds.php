@@ -14,6 +14,9 @@ $id = $_GET['id'];
 	<title>E-rrigate </title>
 	<!-- Bootstrap core CSS -->
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.css" />
 	<!-- Fontawesome CSS -->
 	<link href="css/all.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
@@ -106,6 +109,20 @@ $id = $_GET['id'];
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
    function myFunction($val) {
       if (document.getElementById($val).innerHTML == "Close Valve"){
@@ -119,6 +136,11 @@ $id = $_GET['id'];
          document.getElementById($val).style.backgroundColor = "white";
          document.getElementById($val).innerHTML = "Close Valve";
       }
+   }
+
+   function myState($val) {
+	   var state = document.getElementById($val).innerHTML;
+	   return state;
    }
 </script>
 <script type="text/javascript"> 
@@ -140,6 +162,47 @@ $(document).ready(function() {
               }
           });
       }
+
+	
+	      // Delete ajax request 
+		//   $("body").on("click", ".delBtn", function(e) {
+        //   e.preventDefault();
+        //   var a = $(this).closest("a");
+        //   valve_id = $(this).attr("id");
+        //   Swal.fire({
+        //     title: 'Are you sure?',
+        //     text: "You want to change the valve state!",
+        //     icon: 'warning',
+        //     showCancelButton: true,
+        //     confirmButtonColor: '#3085d6',
+        //     cancelButtonColor: '#d33',
+        //     confirmButtonText: 'Yes, Change the state!'
+        //   }).then((result) => {
+        //     if (result.isConfirmed) {
+        //         $.ajax({
+        //           url: '../controller/beds.php',
+        //           type: 'POST',
+        //           data: {
+        //             valve_id: valve_id
+        //           },
+        //         success: function(response) {
+        //           tr.css('background-color', '#ff6666');
+        //           Swal.fire({
+        //             title: 'Valve updated successfully!',
+        //             showConfirmButton: false,
+        //             type: 'success',
+        //             icon: 'success',
+        //             timer: 900,
+        //             //timerProgressBar: true,
+        //           })
+        //           ShowBeds();
+        //                 }
+        //             });
+
+        //         }
+        //     })
+
+        // });
 
 	})
 </script>

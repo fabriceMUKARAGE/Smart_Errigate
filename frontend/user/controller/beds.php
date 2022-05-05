@@ -1,6 +1,19 @@
 <?php 
 
 require('../model/model.php');
+
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "errigate";
+
+// // Create connection
+// $conn = new mysqli($servername, $username, $password, $dbname);
+// // Check connection
+// if ($conn->connect_error) {
+//   die("Connection failed: " . $conn->connect_error);
+// }
+
 $id = $_GET['id'];
 
 $db = new Database();
@@ -32,7 +45,7 @@ if(isset($_POST['action']) && $_POST['action']== "bed"){
                   </div>
                </div>
                <div class="card-footer">
-               <a href="#beds" class="btn btn-primary" id="'.$data_id.'" onclick="myFunction('.$data_id.')">Open Valve</a>
+               <a href="../controller/beds.php?id='.$id.'&bed_id='.$data_id.'" class="btn btn-primary" onclick="myFunction('.$data_id.')">Open Valve</a>
                </div>
             </div>
          </div>';
@@ -51,5 +64,17 @@ if(isset($_POST['action']) && $_POST['action']== "bed"){
     }
 
 }
+
+
+
+if(isset($_GET['bed_id'])){
+    $bed_id = $_GET['bed_id'];
+    // echo "".$bed_id;
+    $db->bedValve($bed_id);
+    header( 'Location: ../view/beds.php?id='.$id.'');
+    // return $data;
+}
+
+// $data = $db->bedValve($bed_id);
 
 ?>

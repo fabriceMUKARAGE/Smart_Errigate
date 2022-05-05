@@ -90,8 +90,6 @@
           <h2>All Customers</h2>
         </div>
         <div class="info1">
-          <!-- <a class="sortDate"  href="#">Icon</a>
-          <i class='bx bx-chevron' ></i> -->
           <a href="../controller/manage-users.php?export=excel" class="btn btn-success m-1 float-right">
           <i class="fas fa-table fa-lg"></i>&nbsp;&nbsp;Export to Excel</a>
         </div>
