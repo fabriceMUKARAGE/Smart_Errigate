@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+:root {
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    background-image: url("../assets/background.jpg"); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Telex';
+    font-style: normal;
+}
+@media screen and (max-width: 1350px) {
+    body{
+        background-image: url("../assets/background.jpg"); 
+        background-repeat: repeat;
+        background-size: cover;
+        font-family: 'Telex';
+        font-style: normal;
+    }
+  }
+img{
+    position: absolute; top: 10px;left: 10px;
+}
+
+/* css code to create the loader*/
+#loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 120px;
+    height: 120px;
+    margin: -76px 0 0 -76px;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid green;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  /* Add animation to "page content" */
+  .animate-bottom {
+    position: relative;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-duration: 1s;
+    animation-name: animatebottom;
+    animation-duration: 1s
+  }
+  
+  @-webkit-keyframes animatebottom {
+    from { bottom:-100px; opacity:0 } 
+    to { bottom:0px; opacity:1 }
+  }
+  
+  @keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
+  }
+  
+  #myDiv {
+    display: none;
+    text-align: center;
+  }
+
+/* css code for the container on the user*/
+.container{
+    background: rgba(170, 192, 159, 0.75);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    width: 40%;
+    padding: 30px 30px 30px 5px;
+    border-radius: 62px;  
+    position:absolute; left:10%; top:20px; 
+    margin-left: 20%;  
+    margin-top: 6%;
+}
+
+
+@media screen and (max-width: 850px) {
+    .container{
+        background: rgba(170, 192, 159, 0.75);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        width: 70%;
+        padding: 10px 10px 10px 5px;
+        border-radius: 62px;  
+        position:absolute; left:10%; top:20px; 
+        margin-left: 9%;  
+        margin-top: 30%;
+
+    }
+  }
+
+@media screen and (max-height: 700px) {
+    .container{
+        background: rgba(170, 192, 159, 0.75);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        width: 70%;
+        padding: 5px 5px 5px 5px;
+        border-radius: 62px;  
+        position:absolute; left:10%; top:10px; 
+        margin-left: 9%;  
+        margin-top: 10%;
+
+    }
+  }
+
+@media screen and (max-width: 1000px) {
+    .container{
+        background: rgba(170, 192, 159, 0.75);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        width: 70%;
+        padding: 10px 10px 10px 5px;
+        border-radius: 62px;  
+        position:absolute; left:10%; top:20px; 
+        margin-left: 5%;  
+        margin-top: 40%;
+
+    }
+  }
+@media screen and (max-width: 380px) {
+    .container{
+        background: rgba(170, 192, 159, 0.75);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        width: 70%;
+        padding: 10px 10px 10px 5px;
+        border-radius: 62px;  
+        position:absolute; left:10%; top:20px; 
+        margin-left: 9%;  
+        margin-top: 45%;
+
+    }
+  }
+
+h1{
+    text-align: center;
+    margin: 0 0 20px;
+    color:white;
+}
+@media screen and (max-width: 300px) {
+    h1{
+        text-align: center;
+        margin: 0 0 20px;
+        font-size: 14px;
+        color:white;
+    }
+  }
+
+.form{
+    padding: 30px 10px;
+}
+
+
+.form-control{
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+    
+}
+
+.form-control label{
+    color: black;
+    display: block;
+    margin-bottom: 5px;   
+    
+}
+
+
+.form-control input{
+    /* border: 2px solid #f0f0f0; */
+    border: none;
+    border-bottom: 2px solid #f0f0f0;
+    border-width: thin;
+    /* border-radius: 62px; */
+    display: block;
+    width: 75%;
+    padding: 10px;
+    font-size: 14px;
+    background: transparent;
+    margin-left: 17%;
+}
+
+@media screen and (max-width: 300px) {
+    .form-control input{
+        /* border: 2px solid #f0f0f0; */
+        border: none;
+        border-bottom: 2px solid #f0f0f0;
+        border-width: thin;
+        /* border-radius: 62px; */
+        display: block;
+        width: 75%;
+        padding: 0px;
+        font-size: 14px;
+        background: transparent;
+        margin-left: 17%;
+    }
+  }
+
+.form-control input:focus{
+    outline: 0;
+    border-color: #777;
+}
+
+.form-control.success input{
+    border-color: var(--success-color);
+}
+
+.form-control.error input{
+    border-color: var(--error-color);
+}
+
+.form-control small{
+    color: var(--error-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    
+}
+
+.form-control.error small{
+    visibility: visible;
+}
+
+.form button {
+    cursor: pointer;
+    background-color: #17B169;
+    border-radius: 8px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 75%;
+    margin-left: 17%;
+    font-weight: 600;
+}
+
+.form button:hover{
+    background-color: #018749;
+}
+
+#success {
+    color: var(--success-color);
+}
+
+.admin{
+    padding-left: 21.5% ;
+    font-weight: 600px;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 300px) {
+    .admin{
+        padding-left: 21.5% ;
+        font-weight: 600px;
+        font-size: 16px;
+    }
+  }
+
+
+.forgot{
+    padding-left: 20% ;
+    font-weight: 600px;
+    font-size: 20px;
+}
+@media screen and (max-width: 300px) {
+    .forgot{
+        padding-left: 21.5% ;
+        font-weight: 600px;
+        font-size: 16px;
+    }
+  }
+
+.admin .forgot:hover{
+    color: black;
+    /* text-decoration: underline; */
+}
+
+/* styling the sentences on the page*/
+.sentence1{
+    position: absolute;bottom: 70px;right: 15px;
+    color:white;
+    font-weight: 400;
+    font-size: 25px;
+
+}
+@media screen and (max-width: 300px) {
+    .sentence1{
+        position: absolute;bottom: 70px;right: 15px;
+        color:white;
+        font-weight: 400;
+        font-size: 20px;
+    
+    }
+  }
+
+.sentence2{
+    position: absolute;bottom: 20px;right: 15px;
+    color:white;
+    font-weight: 400;
+    font-size: 25px;
+    margin-top: 2px;
+   
+}
+@media screen and (max-width: 300px) {
+    .sentence2{
+        position: absolute;bottom: 20px;right: 15px;
+        color:white;
+        font-weight: 400;
+        font-size: 20px;
+        margin-top: 2px;
+       
+    }
+  }
+
+
+  @media screen and (max-height: 650px) {
+    .container{
+        background: rgba(170, 192, 159, 0.75);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        width: 50%;
+        padding: 10px 10px 10px 5px;
+        border-radius: 62px;  
+        position:absolute; left:20%; top:20px; 
+        margin-left: 5%;  
+        margin-top: 5%;
+
+    }
+  }
+
+  @media screen and (max-height: 725px) {
+        .sentence1{
+            position: absolute;bottom: 20px;right: 15px;
+            color:white;
+            font-weight: 400;
+            font-size: 16px;
+            margin-top: 2px;
+           
+        }
+        .sentence2{
+            position: absolute;bottom: 5px;right: 15px;
+            color:white;
+            font-weight: 400;
+            font-size: 16px;
+            margin-top: 2px;
+           
+        }
+  }
