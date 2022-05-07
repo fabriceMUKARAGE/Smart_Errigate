@@ -23,6 +23,18 @@ body {
  	width: 100px;
 }
 
+/* .valve-opened{
+	color: #4e3914;
+    font-weight: 700;
+    background-color: white;
+}
+
+.valve-closed{
+	color: white;
+	font-weight: 700;
+	background-color: #5ec549;
+} */
+
 .logout-link{
 	color:#4e3914;
 	border: 1px solid #4e3914;
@@ -77,6 +89,8 @@ button.btn-secondary:hover{
 	background-color: #5ec549;
 	border-color: #5ec549;
 }
+
+
 
 .top-nav{
 	background-color: #ffffff !important;

@@ -2,17 +2,6 @@
 
 require('../model/model.php');
 
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $dbname = "errigate";
-
-// // Create connection
-// $conn = new mysqli($servername, $username, $password, $dbname);
-// // Check connection
-// if ($conn->connect_error) {
-//   die("Connection failed: " . $conn->connect_error);
-// }
 
 $id = $_GET['id'];
 
@@ -28,6 +17,7 @@ if(isset($_POST['action']) && $_POST['action']== "bed"){
 
         foreach($data as $row){
             $data_id = $row['id'];
+            // $valve = $row['is_valve_open'];
             if($newRow){
                 echo '<div class="row">';
                 $newRow = false;
@@ -45,7 +35,7 @@ if(isset($_POST['action']) && $_POST['action']== "bed"){
                   </div>
                </div>
                <div class="card-footer">
-               <a href="../controller/beds.php?id='.$id.'&bed_id='.$data_id.'" class="btn btn-primary" onclick="myFunction('.$data_id.')">Open Valve</a>
+               <a href="../controller/beds.php?id='.$id.'&bed_id='.$data_id.'"  id="beds"class="btn btn-primary text-capitalize" onload="myFunction('.$data_id.')">valve '.$row['is_valve_open'].'</a>
                </div>
             </div>
          </div>';

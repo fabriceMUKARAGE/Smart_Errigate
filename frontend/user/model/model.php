@@ -22,7 +22,7 @@ class Database
     public function readBeds($user_id)
     {
         $data = array();
-        $sql = "SELECT id, user_id, bed_name, humidity, temperature, pH, nitrogen, phosphorous, potassium, water_used FROM beds WHERE user_id=:user_id";
+        $sql = "SELECT id, user_id, bed_name, humidity, temperature, pH, nitrogen, phosphorous, potassium, water_used, is_valve_open FROM beds WHERE user_id=:user_id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['user_id' => $user_id]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -114,14 +114,14 @@ class Database
         // return $result;
 
 
-        if ($result['is_valve_open']  == "open"){
-            $sql = "UPDATE beds SET is_valve_open='close' WHERE id = $id";
+        if ($result['is_valve_open']  == "opened"){
+            $sql = "UPDATE beds SET is_valve_open='closed' WHERE id = $id";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
     
         }
-        elseif($result['is_valve_open'] == "close") {
-            $sql = "UPDATE beds SET is_valve_open='open' WHERE id = $id";
+        elseif($result['is_valve_open'] == "closed") {
+            $sql = "UPDATE beds SET is_valve_open='opened' WHERE id = $id";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();    
         }

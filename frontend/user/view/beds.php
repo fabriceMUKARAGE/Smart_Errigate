@@ -125,22 +125,17 @@ $id = $_GET['id'];
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
    function myFunction($val) {
-      if (document.getElementById($val).innerHTML == "Close Valve"){
+      if (document.getElementById($val).innerHTML == "Valve closed"){
          document.getElementById($val).style.color = "white";
          document.getElementById($val).style.backgroundColor = "#5ec549";
-         document.getElementById($val).innerHTML = "Open Valve";
+        //  document.getElementById($val).innerHTML = "Open Valve";
       }
       else{
          document.getElementById($val).style.color = "#4e3914";
          document.getElementById($val).style.fontWeight = "700";
          document.getElementById($val).style.backgroundColor = "white";
-         document.getElementById($val).innerHTML = "Close Valve";
+        //  document.getElementById($val).innerHTML = "Close Valve";
       }
-   }
-
-   function myState($val) {
-	   var state = document.getElementById($val).innerHTML;
-	   return state;
    }
 </script>
 <script type="text/javascript"> 
@@ -162,47 +157,6 @@ $(document).ready(function() {
               }
           });
       }
-
-	
-	      // Delete ajax request 
-		//   $("body").on("click", ".delBtn", function(e) {
-        //   e.preventDefault();
-        //   var a = $(this).closest("a");
-        //   valve_id = $(this).attr("id");
-        //   Swal.fire({
-        //     title: 'Are you sure?',
-        //     text: "You want to change the valve state!",
-        //     icon: 'warning',
-        //     showCancelButton: true,
-        //     confirmButtonColor: '#3085d6',
-        //     cancelButtonColor: '#d33',
-        //     confirmButtonText: 'Yes, Change the state!'
-        //   }).then((result) => {
-        //     if (result.isConfirmed) {
-        //         $.ajax({
-        //           url: '../controller/beds.php',
-        //           type: 'POST',
-        //           data: {
-        //             valve_id: valve_id
-        //           },
-        //         success: function(response) {
-        //           tr.css('background-color', '#ff6666');
-        //           Swal.fire({
-        //             title: 'Valve updated successfully!',
-        //             showConfirmButton: false,
-        //             type: 'success',
-        //             icon: 'success',
-        //             timer: 900,
-        //             //timerProgressBar: true,
-        //           })
-        //           ShowBeds();
-        //                 }
-        //             });
-
-        //         }
-        //     })
-
-        // });
 
 	})
 </script>
