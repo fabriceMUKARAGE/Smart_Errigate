@@ -35,7 +35,7 @@ if(isset($_POST['action']) && $_POST['action']== "bed"){
                   </div>
                </div>
                <div class="card-footer">
-               <a href="../controller/beds.php?id='.$id.'&bed_id='.$data_id.'"  id="beds"class="btn btn-primary text-capitalize" onload="myFunction('.$data_id.')">valve '.$row['is_valve_open'].'</a>
+               <a href="../controller/beds.php?id='.$id.'&bed_id='.$data_id.'"  id="'.$data_id.'" class="btn btn-primary text-capitalize '.$row['is_valve_open'].'" onclick="myFunction('.$data_id.')">valve '.$row['is_valve_open'].'</a>
                </div>
             </div>
          </div>';

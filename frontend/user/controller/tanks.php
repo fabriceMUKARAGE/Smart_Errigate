@@ -15,6 +15,9 @@ if(isset($_POST['action']) && $_POST['action']== "tank"){
 
         foreach($data as $row){
             $data_id = $row['id'];
+            $tank_name = $row['tank_name'];
+            $name = str_replace(' ', '', $tank_name);
+            // $name = trim($row['tank_name'], " ");
             if($newRow){
                 echo '<div class="row">';
                 $newRow = false;
@@ -31,7 +34,7 @@ if(isset($_POST['action']) && $_POST['action']== "tank"){
                   </div>
                </div>
                <div class="card-footer">
-               <a href="#tanks" class="btn btn-primary" id="'.$data_id.'" onclick="myFunction('.$data_id.')">Open Valve</a>
+               <a href="../controller/tanks.php?id='.$id.'&tank_id='.$data_id.'&tank_name='.$row['tank_name'].'"  id="'.$name.'" class="btn btn-primary text-capitalize '.$row['is_pump_open'].'" onclick="myFunction('.$data_id.')">valve '.$row['is_pump_open'].'</a>
                </div>
             </div>
          </div>';
@@ -49,6 +52,18 @@ if(isset($_POST['action']) && $_POST['action']== "tank"){
         echo '<h3 class="text-center text-secondary mt-5">:( No Tanks present in the database )</h3>';
     }
 
+}
+
+if(isset($_GET['tank_id'])){
+    $tank_id = $_GET['tank_id'];
+    // $str = 'This is a simple piece of text.';
+    // $new_str = str_replace(' ', '', $str);
+    $tank_name = $_GET['tank_name'];
+    $name = str_replace(' ', '', $tank_name);
+    // echo "".$bed_id;
+    $db->tankValve($tank_id);
+    header( 'Location: ../view/tanks.php?id='.$id.'#'.$name.'');
+    // return $data;
 }
 
 ?>

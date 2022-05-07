@@ -1,7 +1,10 @@
 <?php 
+
 session_start();
 $email_session = $_SESSION["email"];
 $id = $_GET['id'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +80,7 @@ $id = $_GET['id'];
 
 		<!-- All Beds -->
 		<div class="services-bar">
-            <h1 class="my-4">All Beds </h1>
+            <h1 class="my-4" id="beds">All Beds </h1>
             <!-- Beds Section -->
 			<div id="showBeds">
 
@@ -125,19 +128,35 @@ $id = $_GET['id'];
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
    function myFunction($val) {
-      if (document.getElementById($val).innerHTML == "Valve closed"){
-         document.getElementById($val).style.color = "white";
-         document.getElementById($val).style.backgroundColor = "#5ec549";
+      if (document.getElementById($val).innerHTML == "Valve Closed"){
+        //  document.getElementById($val).style.color = "white";
+        //  document.getElementById($val).style.backgroundColor = "#5ec549";
         //  document.getElementById($val).innerHTML = "Open Valve";
       }
       else{
-         document.getElementById($val).style.color = "#4e3914";
-         document.getElementById($val).style.fontWeight = "700";
-         document.getElementById($val).style.backgroundColor = "white";
+        //  document.getElementById($val).style.color = "#4e3914";
+        //  document.getElementById($val).style.fontWeight = "700";
+        //  document.getElementById($val).style.backgroundColor = "white";
         //  document.getElementById($val).innerHTML = "Close Valve";
       }
    }
 </script>
+<style>
+    .closed {
+        color: #fff;
+        background-color: #5ec549 !important;
+    }
+
+    .opened {
+        color: #4e3914;
+        background-color: white !important;
+        font-weight: 700;
+    }
+
+    .opened:hover{
+        color: #4e3914 !important;
+    }
+</style>
 <script type="text/javascript"> 
 $(document).ready(function() {
 

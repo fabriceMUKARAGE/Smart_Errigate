@@ -48,7 +48,7 @@ class Database
     public function readTanks($user_id)
     {
         $data = array();
-        $sql = "SELECT id, user_id, tank_name, level, refill, rate FROM tanks WHERE user_id=:user_id";
+        $sql = "SELECT id, user_id, tank_name, level, refill, rate, is_pump_open FROM tanks WHERE user_id=:user_id";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute(['user_id' => $user_id]);
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -129,16 +129,34 @@ class Database
         else{
             echo "Unsuccessful";
         }
-        // $sql = "UPDATE beds SET is_valve_open= :is_valve_open WHERE id= :id";
         return $result;
     }
 
-    public function tankValve($id, $is_pump_open)
+    public function tankValve($id)
     {
-        $sql = "UPDATE tanks SET is_pump_open= :is_pump_open WHERE id= :id";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute(['is_pump_open' => $is_pump_open, 'id' => $id]);
-        return true;
+        $sql1 = "SELECT is_pump_open FROM tanks WHERE id=:id";
+        $stmt1 = $this->conn->prepare($sql1);
+        $stmt1->execute(['id' => $id]);
+        $result = $stmt1->fetch(PDO::FETCH_ASSOC);
+        // return $result;
+
+
+        if ($result['is_pump_open']  == "opened"){
+            $sql = "UPDATE tanks SET is_pump_open='closed' WHERE id = $id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+    
+        }
+        elseif($result['is_pump_open'] == "closed") {
+            $sql = "UPDATE tanks SET is_pump_open='opened' WHERE id = $id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();    
+        }
+
+        else{
+            echo "Unsuccessful";
+        }
+        return $result;
     }
 
 
@@ -188,7 +206,7 @@ $ob = new Database();
 // print_r($ob->readFarmWeather(33));
 // print_r($ob->getUserBiId(6));
 // print_r($ob->bedValve(11));
-// print_r($ob->tankValve(2, "Close"));
+// print_r($ob->tankValve(8));
 // print_r($ob->totalWeatherRowCount(33));
 // print_r($ob->totalBedsRowCount(33));
 // print_r($ob->totalTanksRowCount(33));

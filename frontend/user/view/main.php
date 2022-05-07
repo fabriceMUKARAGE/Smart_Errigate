@@ -43,7 +43,7 @@ $id = $_GET['id'];
                      <a class="nav-link" href="sensors.php?id=<?php echo "".$id?>">Sensors</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="../profile/profile.php">Edit Profile</a>
+                     <a class="nav-link" href="../profile/profile.php?id=<?php echo "".$id?>">Edit Profile</a>
                   </li>
                   <li class="nav-item">
                      <a class="logout-link" href="../../../index.php">Logout</a>

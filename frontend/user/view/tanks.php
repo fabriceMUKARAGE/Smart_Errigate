@@ -109,18 +109,35 @@ $id = $_GET['id'];
 <script>
    function myFunction($val) {
       if (document.getElementById($val).innerHTML == "Close Valve"){
-         document.getElementById($val).style.color = "white";
-         document.getElementById($val).style.backgroundColor = "#5ec549";
-         document.getElementById($val).innerHTML = "Open Valve";
+         // document.getElementById($val).style.color = "white";
+         // document.getElementById($val).style.backgroundColor = "#5ec549";
+         // document.getElementById($val).innerHTML = "Open Valve";
       }
       else{
-         document.getElementById($val).style.color = "#4e3914";
-         document.getElementById($val).style.fontWeight = "700";
-         document.getElementById($val).style.backgroundColor = "white";
-         document.getElementById($val).innerHTML = "Close Valve";
+         // document.getElementById($val).style.color = "#4e3914";
+         // document.getElementById($val).style.fontWeight = "700";
+         // document.getElementById($val).style.backgroundColor = "white";
+         // document.getElementById($val).innerHTML = "Close Valve";
       }
    }
 </script>
+
+<style>
+    .closed {
+        color: #fff;
+        background-color: #5ec549 !important;
+    }
+
+    .opened {
+        color: #4e3914;
+        background-color: white !important;
+        font-weight: 700;
+    }
+
+    .opened:hover{
+        color: #4e3914 !important;
+    }
+</style>
 
 <script type="text/javascript"> 
 $(document).ready(function() {

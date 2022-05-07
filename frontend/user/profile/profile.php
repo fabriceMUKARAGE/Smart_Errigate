@@ -2,6 +2,7 @@
         require './config.php';
         session_start();
         $email_session = $_SESSION["email"];
+        $id = $_GET['id'];
 
         $sql = "SELECT email, phone_number FROM customers WHERE email=?";
         $stmt = $con->prepare($sql); 
@@ -23,7 +24,7 @@
             phone_number = '".$phone_number."' WHERE email = '".$email_session."'";
             if ($con->query($sql) == TRUE) {
                 echo '<script>alert("Record updated successfully")</script>';
-                header("Location: ../view/main.php");
+                header('Location: ../view/main.php?id='.$id.'');
               } else {
                 echo "Error updating record: " . $con->error;
               }
@@ -82,7 +83,7 @@
                                 </div>
                                 <div class="form-control">
                                     <label for="password">Password</label>
-                                    <input type="text" name="password"  placeholder="**********" id="password" required>
+                                    <input type="password" name="password"  placeholder="**********" id="password" required>
                                     <small id='passwordError'></small>
                                 </div>
                                 <small id='success'></small>
