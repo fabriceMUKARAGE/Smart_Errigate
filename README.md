@@ -12,7 +12,6 @@
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
 
 
 # 📖 [Smart_Errigate] <a name="about-project"></a>
@@ -23,7 +22,7 @@ This project is web application that is mainly to aid farmers in irrigating thei
 
 ### Tech Stack <a name="tech-stack"></a>
 
-I Built this project with PHP, JavaScript, APIs, Bootstrap 5, HTML and CSS, and SQL.
+I Built this project with PHP, JavaScript, APIs, Bootstrap 5, HTML/CSS, and SQL.
 
 ### Key Features <a name="key-features"></a>
 
@@ -83,10 +82,6 @@ If you enjoyed this project, consider following for more enjoyable projects just
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
-I want to thank Ashesi University for providing me with the various tools and skills I needed to complete this project.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
