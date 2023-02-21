@@ -81,9 +81,3 @@ I encourage contributions, bugs, and feature requests!
 If you enjoyed this project, consider following for more enjoyable projects just like it. Many thanks
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
